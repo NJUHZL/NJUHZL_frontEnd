@@ -1,0 +1,14 @@
+@import "./colors";
+
+$font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//  Logo
+//  ───────────────────────────────────
+$logo-color: $oc-blue-6;
+$logo-font-size: 50px;
+$logo-font-family: "IBM Plex Sans", $font-base;
+
+//  Footer
+//  ───────────────────────────────────
+$footer-color: $oc-gray-7;
