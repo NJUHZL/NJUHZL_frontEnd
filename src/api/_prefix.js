@@ -1,3 +1,3 @@
 export const API_VERSION = "/api/v1";
 
-export const TEST_MODULE = `${API_VERSION}/test`;
+export const USER_MODULE = `${API_VERSION}/user`; //用户模块
