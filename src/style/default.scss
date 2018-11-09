@@ -1,1 +1,16 @@
-@import "colors";
+@import './config';
+$default-border-radius: 7px;
+$default-shadow: 0 5px 35px rgba(0, 0, 0, 3%);
+$default-shadow-active: 0 10px 55px rgba(0, 0, 0, 15%);
+
+$page-background-color: $grey-0;
+
+$default-font: $font-base;
+
+$font-size-h1: 32px;
+$font-size-h2: 28px;
+$font-size-h3: 24px;
+$font-size-h4: 20px;
+$font-size-h5: 16px;
+
+$page-padding: 20px;
