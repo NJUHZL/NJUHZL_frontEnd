@@ -1,0 +1,31 @@
+import request from "../util/request";
+import { USER_MODULE } from "./_prefix";
+
+/**
+ * 注册前验证
+ * @param {*} email
+ */
+export const registerIdentify = userEmail => {
+  return request(`${USER_MODULE}/identify`, {
+    method: "POST",
+    body: {
+      email: userEmail
+    }
+  });
+};
+
+/**
+ * 用户注册
+ * @param {} param0
+ */
+export const register = ({ email, nickname, password, indentifyCode }) => {
+  return request(`${USER_MODULE}/register`, {
+    method: "POST",
+    body: {
+      email: email,
+      nickname: nickname,
+      password: password,
+      indentifyCode: indentifyCode
+    }
+  });
+};
