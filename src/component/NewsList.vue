@@ -1,16 +1,23 @@
 <template>
-  <div class="newsintro">
-    <div class="body"></div>
+  <div class="newslist">
+    <div class="body">
+      <NewsIntro></NewsIntro>
+    </div>
   </div>
 </template>
 
 <script>
+import NewsIntro from './NewsIntro'
+
 export default {
-  name: 'NewsIntro',
+  name: 'NewsList',
   data () {
     return {
 
     }
+  },
+  components:{
+    NewsIntro,
   }
 }
 </script>
@@ -22,8 +29,8 @@ export default {
   padding:0;
 }
 .body{
-	width: 100%;
-	height:200px;
-	border: 2px solid #036e8b;
+	width: 50%;
+	height:1000px;
+	/*border: 1px solid black;*/
 }
 </style>
