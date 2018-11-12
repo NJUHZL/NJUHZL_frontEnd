@@ -8,7 +8,7 @@ export default new Router({
   routes: [
     {
       path: "/user",
-      component: () => import("@/layout/DefaultLayout"),
+      component: () => import("@/layout/defaultLayout"),
       children: [
         {
           name: "register",
