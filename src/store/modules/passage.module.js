@@ -12,7 +12,7 @@ const actions = {
   //获得热点走马灯文章
   async [ACTIONS.FETCH_HOT_PASSAGE](context) {
     const result = await fetchHotPassage();
-    context.commit(MUTATIONS.SET_HOT_PASSAGE, result);
+    context.commit(MUTATIONS.SET_HOT_PASSAGE, result.data);
   }
 };
 

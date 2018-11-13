@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { PosterCard } from "./PosterCard.vue";
+import PosterCard from "./PosterCard.vue";
 
 export default {
   name: "MyPoster",

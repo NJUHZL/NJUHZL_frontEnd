@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { MyPoster } from "@/component/MyPoster/index.vue";
+import MyPoster from "@/component/MyPoster/index.vue";
 import { mapState } from "vuex";
 import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
 
