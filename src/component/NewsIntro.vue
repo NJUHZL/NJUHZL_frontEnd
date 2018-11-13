@@ -1,20 +1,20 @@
 <template>
   <div class="newsintro">
     <div class="body">
-    	<div class="pic"><img src="#"></div>
+    	<div class="pic"><img src="News.coverPicture"></div>
     	<div class="intro">
-    		<div class="title">大标题</div>
+    		<div class="title">{{News.title}}</div>
     		<div class="content">
-	    		文章简介</br>
-	    		文章简介</br>
-	    		文章简介</br>
+	    		{{News.script}}
     		</div>
     		<div class="footer">
     			<div class="date">	
-    				分类 | 2018-xx-xx
+    				{{News.type}} | {{News.date}}
     			</div>
     			<div class="tools">
-    				<div class="el-icon-edit">view</div>
+    				<div class="el-icon-view icons">10245</div>
+    				<div class="el-icon-view icons">152</div>
+    				<div class="el-icon-view icons">1352</div>
     			</div>
     		</div>
     	</div>
@@ -23,12 +23,23 @@
 </template>
 
 <script>
+import '../../node_modules/element-ui/lib/theme-chalk/index.css'
 export default {
   name: 'NewsIntro',
   data () {
     return {
 
     }
+  },
+  props:{
+  	News:{
+  		title: String,
+        id: String,
+        coverPicture: String,
+        script:String,
+        type: String,
+        date: String,
+  	}
   }
 }
 </script>
@@ -82,10 +93,13 @@ export default {
 	float: left;
 }
 .tools{
-	width: 250px;
+	width: 200px;
 	height: 21px;
-	background-color: lightgray;
+	/*background-color: lightgray;*/
 	float: right;
 
+}
+.icons{
+	margin-left: 10px;
 }
 </style>
