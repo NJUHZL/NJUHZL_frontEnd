@@ -14,52 +14,68 @@ export default {
   data() {
     return {
       NewsArray: [
-        {
-          title: "I am a title",
-          id: "001", //文章的id，后台自动生成
-          coverPicture: "xxxxx.xxxx.xxx", //url
-          script: "第一篇文章内容", //简介
-          type: "A", //具体未定
-          date: "2018-11-09"
-        },
-        {
-          title: "I am a title2",
-          id: "002", //文章的id，后台自动生成
-          coverPicture: "xxxxx.xxxx.xxx", //url
-          script: "第二篇文章内容", //简介
-          type: "B", //具体未定
-          date: "2018-11-09"
-        },
-        {
-          title: "I am a title2",
-          id: "002", //文章的id，后台自动生成
-          coverPicture: "xxxxx.xxxx.xxx", //url
-          script: "第二篇文章内容", //简介
-          type: "B", //具体未定
-          date: "2018-11-09"
-        },
-        {
-          title: "I am a title2",
-          id: "002", //文章的id，后台自动生成
-          coverPicture: "xxxxx.xxxx.xxx", //url
-          script: "第二篇文章内容", //简介
-          type: "B", //具体未定
-          date: "2018-11-09"
-        },
-        {
-          title: "I am a title2",
-          id: "002", //文章的id，后台自动生成
-          coverPicture: "xxxxx.xxxx.xxx", //url
-          script: "第二篇文章内容", //简介
-          type: "B", //具体未定
-          date: "2018-11-09"
-        }
+        // {
+        //   title: "I am a title",
+        //   id: "001", //文章的id，后台自动生成
+        //   coverPicture: "xxxxx.xxxx.xxx", //url
+        //   script: "第一篇文章内容", //简介
+        //   type: "A", //具体未定
+        //   date: "2018-11-09"
+        // },
+        // {
+        //   title: "I am a title2",
+        //   id: "002", //文章的id，后台自动生成
+        //   coverPicture: "xxxxx.xxxx.xxx", //url
+        //   script: "第二篇文章内容", //简介
+        //   type: "B", //具体未定
+        //   date: "2018-11-09"
+        // },
+        // {
+        //   title: "I am a title2",
+        //   id: "002", //文章的id，后台自动生成
+        //   coverPicture: "xxxxx.xxxx.xxx", //url
+        //   script: "第二篇文章内容", //简介
+        //   type: "B", //具体未定
+        //   date: "2018-11-09"
+        // },
+        // {
+        //   title: "I am a title2",
+        //   id: "002", //文章的id，后台自动生成
+        //   coverPicture: "xxxxx.xxxx.xxx", //url
+        //   script: "第二篇文章内容", //简介
+        //   type: "B", //具体未定
+        //   date: "2018-11-09"
+        // },
+        // {
+        //   title: "I am a title2",
+        //   id: "002", //文章的id，后台自动生成
+        //   coverPicture: "xxxxx.xxxx.xxx", //url
+        //   script: "第二篇文章内容", //简介
+        //   type: "B", //具体未定
+        //   date: "2018-11-09"
+        // }
       ]
     };
   },
 
   components: {
     NewsIntro
+  },
+  created() {
+    console.log("测试 created函数是否生效");
+    var _this=this;
+    for(var i=0;i<3;i++)
+    {
+      this.$axios.get("https://www.easy-mock.com/mock/5beace67e551c21d755b9693/simplenews")
+      .then(function(response){
+        console.log(response.data);
+        var data=response.data.data;
+        _this.NewsArray.push(data);
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+    }
   }
 };
 </script>
