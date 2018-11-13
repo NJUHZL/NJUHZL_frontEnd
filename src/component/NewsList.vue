@@ -2,6 +2,10 @@
   <div class="newslist">
     <div class="body">
       <NewsIntro></NewsIntro>
+      <NewsIntro></NewsIntro>
+      <NewsIntro></NewsIntro>
+      <NewsIntro></NewsIntro>
+      <NewsIntro></NewsIntro>
     </div>
   </div>
 </template>
@@ -29,7 +33,7 @@ export default {
   padding:0;
 }
 .body{
-	width: 50%;
+	width: 45%;
 	height:1000px;
 	/*border: 1px solid black;*/
 }
