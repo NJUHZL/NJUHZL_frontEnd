@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import NewsList from './component/NewsList'
+import NewsList from "./component/NewsList";
 export default {
   name: "App",
-  components:{
-  	NewsList,
+  components: {
+    NewsList
   }
 };
 </script>

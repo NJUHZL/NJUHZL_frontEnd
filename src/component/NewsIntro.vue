@@ -4,13 +4,9 @@
     	<div class="pic"><img src="News.coverPicture"></div>
     	<div class="intro">
     		<div class="title">{{News.title}}</div>
-    		<div class="content">
-	    		{{News.script}}
-    		</div>
+    		<div class="content">{{News.script}}</div>
     		<div class="footer">
-    			<div class="date">	
-    				{{News.type}} | {{News.date}}
-    			</div>
+    			<div class="date">{{News.type}} | {{News.date}}</div>
     			<div class="tools">
     				<div class="el-icon-view icons">10245</div>
     				<div class="el-icon-view icons">152</div>
@@ -23,83 +19,81 @@
 </template>
 
 <script>
-import '../../node_modules/element-ui/lib/theme-chalk/index.css'
+import "../../node_modules/element-ui/lib/theme-chalk/index.css";
 export default {
-  name: 'NewsIntro',
-  data () {
-    return {
-
-    }
+  name: "NewsIntro",
+  data() {
+    return {};
   },
-  props:{
-  	News:{
-  		title: String,
-        id: String,
-        coverPicture: String,
-        script:String,
-        type: String,
-        date: String,
-  	}
+  props: {
+    News: {
+      title: String,
+      id: String,
+      coverPicture: String,
+      script: String,
+      type: String,
+      date: String
+    }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-*{
+<style lang="scss" scoped>
+* {
   margin: 0;
-  padding:0;
+  padding: 0;
 }
-.body{
-	width: 100%;
-	height:240px;
-	margin-bottom: 20px;
-	border: 2px solid #036e8b;
+.body {
+  width: 100%;
+  height: 240px;
+  margin-bottom: 20px;
+  border: 2px solid #036e8b;
 }
-.pic{
-	width:35%;
-	height: 220px;
-	margin: 10px 1%;
-	margin-right: 2%;
-	background-color: #dcdddd;
-	float: left;
+.pic {
+  width: 35%;
+  height: 220px;
+  margin: 10px 1%;
+  margin-right: 2%;
+  background-color: #dcdddd;
+  float: left;
 }
-.intro{
-	height: 220px;
-	width: 61%;
-	margin: 10px 0;
-	margin-top: 10px;
-	/*background-color: lightgray;*/
-	float: left;
+.intro {
+  height: 220px;
+  width: 61%;
+  margin: 10px 0;
+  margin-top: 10px;
+  /*background-color: lightgray;*/
+  float: left;
 }
-.title{
-	width: 100%;
-	height: 70px;
-	font-size: 30px;
-	line-height: 70px;
-	font-weight: bold;
+.title {
+  width: 100%;
+  height: 70px;
+  font-size: 30px;
+  line-height: 70px;
+  font-weight: bold;
 }
-.content{
-	width: 100%;
-	height: 120px;
-	font-size: 18px;
-	color:#595757;
+.content {
+  width: 100%;
+  height: 120px;
+  font-size: 18px;
+  color: #595757;
 }
-.footer{
-	height: 30px;
+.footer {
+  height: 30px;
 }
-.date{
-	width: 150px;
-	float: left;
+.date {
+  width: 150px;
+  color: #595757;
+  float: left;
 }
-.tools{
-	width: 200px;
-	height: 21px;
-	/*background-color: lightgray;*/
-	float: right;
-
+.tools {
+  width: 200px;
+  height: 21px;
+  /*background-color: lightgray;*/
+  float: right;
 }
-.icons{
-	margin-left: 10px;
+.icons {
+  margin-left: 10px;
 }
 </style>
