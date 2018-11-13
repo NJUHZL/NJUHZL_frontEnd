@@ -16,6 +16,17 @@ export default new Router({
           component: () => import("@/views/Register")
         }
       ]
+    },
+    {
+      path: "/",
+      component: () => import("@/layout/defaultLayout"),
+      children: [
+        {
+          name: "home",
+          path: "home",
+          component: () => import("@/views/Home")
+        }
+      ]
     }
   ]
 });

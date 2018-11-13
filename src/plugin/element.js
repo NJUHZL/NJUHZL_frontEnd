@@ -18,7 +18,8 @@ import {
   Card,
   Radio,
   RadioGroup,
-  RadioButton
+  RadioButton,
+  Carousel
 } from "element-ui";
 
 Vue.use(Button);
@@ -39,6 +40,7 @@ Vue.use(Card);
 Vue.use(Radio);
 Vue.use(RadioGroup);
 Vue.use(RadioButton);
+Vue.use(Carousel);
 
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
