@@ -1,29 +1,31 @@
 <template>
   <div>
     <h1>Home</h1>
-    <Poster></Poster>
+    <my-poster v-bind:passageList="hotPassage"></my-poster>
   </div>
 </template>
 
 <script>
-import { Poster } from "@/component/Poster/index.vue";
+import { MyPoster } from "@/component/MyPoster/index.vue";
 import { mapState } from "vuex";
+import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
 
 export default {
   name: "Home",
-  components: { Poster },
-  methods: {
-
-  },
+  components: { MyPoster },
+  methods: {},
   computed: {
     ...mapState({
-      
+      hotPassage: state => state.passage.hotPassage
     })
+  },
+
+  async mounted() {
+    //挂载后拉取数据
+    await this.$store.dispatch(FETCH_HOT_PASSAGE);
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 </style>
-
-

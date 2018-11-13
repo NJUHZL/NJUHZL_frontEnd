@@ -1,10 +1,14 @@
 <template>
-  <div class="poster-card"></div>
+  <div class="poster-card">
+    <div>{{title}}</div>
+    <div>{{script}}</div>
+    <div>{{date}}</div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: PosterCard,
+  name: "PosterCard",
   props: {
     title: {
       type: String,
@@ -27,7 +31,7 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

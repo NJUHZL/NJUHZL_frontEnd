@@ -8,7 +8,8 @@
 
 <script>
 import { mapState } from "vuex";
-import { REGISTER_IDENTIFY } from "@/store/type/mutations";
+import { REGISTER_IDENTIFY } from "@/store/type/actions";
+
 export default {
   name: "Register",
   data() {

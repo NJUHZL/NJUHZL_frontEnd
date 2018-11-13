@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import { PosterCard } from "./PosterCard";
+import { PosterCard } from "./PosterCard.vue";
 
 export default {
-  name: "Poster",
+  name: "MyPoster",
   components: { PosterCard },
   props: {
     passageList: {
@@ -26,9 +26,8 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 </style>
-
