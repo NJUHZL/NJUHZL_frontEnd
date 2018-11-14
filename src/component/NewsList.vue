@@ -1,7 +1,7 @@
 <template>
   <div class="newslist">
     <div class="body">
-      <NewsIntro v-for="news in NewsArray" v-bind:News="news"></NewsIntro>
+      <NewsIntro v-for="news in NewsArray" v-bind:News=news></NewsIntro>
     </div>
   </div>
 </template>
@@ -14,46 +14,38 @@ export default {
   data() {
     return {
       NewsArray: [
-        // {
-        //   title: "I am a title",
-        //   id: "001", //文章的id，后台自动生成
-        //   coverPicture: "xxxxx.xxxx.xxx", //url
-        //   script: "第一篇文章内容", //简介
-        //   type: "A", //具体未定
-        //   date: "2018-11-09"
-        // },
-        // {
-        //   title: "I am a title2",
-        //   id: "002", //文章的id，后台自动生成
-        //   coverPicture: "xxxxx.xxxx.xxx", //url
-        //   script: "第二篇文章内容", //简介
-        //   type: "B", //具体未定
-        //   date: "2018-11-09"
-        // },
-        // {
-        //   title: "I am a title2",
-        //   id: "002", //文章的id，后台自动生成
-        //   coverPicture: "xxxxx.xxxx.xxx", //url
-        //   script: "第二篇文章内容", //简介
-        //   type: "B", //具体未定
-        //   date: "2018-11-09"
-        // },
-        // {
-        //   title: "I am a title2",
-        //   id: "002", //文章的id，后台自动生成
-        //   coverPicture: "xxxxx.xxxx.xxx", //url
-        //   script: "第二篇文章内容", //简介
-        //   type: "B", //具体未定
-        //   date: "2018-11-09"
-        // },
-        // {
-        //   title: "I am a title2",
-        //   id: "002", //文章的id，后台自动生成
-        //   coverPicture: "xxxxx.xxxx.xxx", //url
-        //   script: "第二篇文章内容", //简介
-        //   type: "B", //具体未定
-        //   date: "2018-11-09"
-        // }
+      {
+      title: "String",
+      id: "String",
+      coverPicture: "String",
+      script: "String",
+      type: "String",
+      date: "String"
+      },
+      {
+      title: "String",
+      id: "String",
+      coverPicture: "String",
+      script: "String",
+      type: "String",
+      date: "String"
+      },
+      {
+      title: "String",
+      id: "String",
+      coverPicture: "String",
+      script: "String",
+      type: "String",
+      date: "String"
+      },
+      {
+      title: "String",
+      id: "String",
+      coverPicture: "String",
+      script: "String",
+      type: "String",
+      date: "String"
+      },
       ]
     };
   },
@@ -63,19 +55,25 @@ export default {
   },
   created() {
     console.log("测试 created函数是否生效");
-    var _this=this;
-    for(var i=0;i<3;i++)
-    {
-      this.$axios.get("https://www.easy-mock.com/mock/5beace67e551c21d755b9693/simplenews")
-      .then(function(response){
-        console.log(response.data);
-        var data=response.data.data;
-        _this.NewsArray.push(data);
-      })
-      .catch(function(error){
-        console.log(error);
-      })
-    }
+
+    (function(_this){
+      _this.$axios
+        .get(
+          "https://www.easy-mock.com/mock/5beace67e551c21d755b9693/simplenews"
+        )
+        .then(function(response) {
+          console.log(response.data);
+          _this.NewsArray=response.data.data;
+          console.log(_this.NewsArray);
+          //var data = response.data;
+          //_this.NewsArray.push(data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    })(this);
+    
+
   }
 };
 </script>

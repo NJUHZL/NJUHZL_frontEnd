@@ -26,14 +26,15 @@ export default {
     return {};
   },
   props: {
-    News: {
-      title: String,
-      id: String,
-      coverPicture: String,
-      script: String,
-      type: String,
-      date: String
-    }
+    News:Object,
+    // News: {
+    //   title: String,
+    //   id: String,
+    //   coverPicture: String,
+    //   script: String,
+    //   type: String,
+    //   date: String
+    // }
   }
 };
 </script>
