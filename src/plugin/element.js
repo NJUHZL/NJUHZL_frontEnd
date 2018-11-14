@@ -1,4 +1,5 @@
 import Vue from "vue";
+import "element-ui/lib/theme-chalk/index.css";
 import {
   Button,
   Container,
@@ -18,7 +19,9 @@ import {
   Card,
   Radio,
   RadioGroup,
-  RadioButton
+  RadioButton,
+  Carousel,
+  CarouselItem
 } from "element-ui";
 
 Vue.use(Button);
@@ -39,6 +42,8 @@ Vue.use(Card);
 Vue.use(Radio);
 Vue.use(RadioGroup);
 Vue.use(RadioButton);
+Vue.use(Carousel);
+Vue.use(CarouselItem);
 
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
