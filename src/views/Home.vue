@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Home</h1>
-    <my-poster v-bind:passageList="hotPassage"></my-poster>
+    <div class="part">
+      <div class="item">
+        <my-poster v-bind:passageList="hotPassage"></my-poster>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,4 +32,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.part {
+  display: flex;
+  justify-content: center;
+  width: 1200px;
+  height: 100%;
+  .item {
+    width: 100%;
+    height: 100%;
+  }
+}
 </style>
