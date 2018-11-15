@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/style/default.scss';
+@import "@/style/default.scss";
 
 .poster-card {
   width: 100%;
