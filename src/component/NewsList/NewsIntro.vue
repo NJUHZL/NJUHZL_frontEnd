@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import "../../node_modules/element-ui/lib/theme-chalk/index.css";
+import "../../../node_modules/element-ui/lib/theme-chalk/index.css";
 export default {
   name: "NewsIntro",
   data() {
@@ -27,14 +27,6 @@ export default {
   },
   props: {
     News:Object,
-    // News: {
-    //   title: String,
-    //   id: String,
-    //   coverPicture: String,
-    //   script: String,
-    //   type: String,
-    //   date: String
-    // }
   }
 };
 </script>
@@ -64,7 +56,6 @@ export default {
   width: 61%;
   margin: 10px 0;
   margin-top: 10px;
-  /*background-color: lightgray;*/
   float: left;
 }
 .title {
@@ -91,7 +82,6 @@ export default {
 .tools {
   width: 200px;
   height: 21px;
-  /*background-color: lightgray;*/
   float: right;
 }
 .icons {
