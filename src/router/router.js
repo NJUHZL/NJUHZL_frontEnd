@@ -18,7 +18,7 @@ export default new Router({
       ]
     },
     {
-      path: "/",
+      path: "/home",
       component: () => import("@/layout/defaultLayout"),
       children: [
         {
@@ -29,16 +29,10 @@ export default new Router({
       ]
     },
 
-      {
-          path: "/",
-          component: () => import("@/layout/defaultLayout"),
-          children: [
-              {
-                  name: "homepage",
-                  path: "homepage",
-                  component: () => import("@/views/homepage")
-              }
-          ]
-      },
+    {
+      name: "homepage",
+      path: "/",
+      component: () => import("@/views/homepage")
+    }
   ]
 });
