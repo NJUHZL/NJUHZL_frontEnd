@@ -18,7 +18,7 @@ export default new Router({
       ]
     },
     {
-      path: "/",
+      path: "/home",
       component: () => import("@/layout/defaultLayout"),
       children: [
         {
@@ -27,6 +27,12 @@ export default new Router({
           component: () => import("@/views/Home.vue")
         }
       ]
+    },
+
+    {
+      name: "homepage",
+      path: "/",
+      component: () => import("@/views/homepage")
     }
   ]
 });
