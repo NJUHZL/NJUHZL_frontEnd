@@ -6,17 +6,21 @@
         <my-poster v-bind:passageList="hotPassage"></my-poster>
       </div>
     </div>
+    <div class="part">
+      <simple-card title="事实核查" picture="sshc.jpg"></simple-card>
+    </div>
   </div>
 </template>
 
 <script>
 import MyPoster from "@/component/MyPoster/index.vue";
+import SimpleCard from "@/component/SimpleCard/index.vue";
 import { mapState } from "vuex";
 import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
 
 export default {
   name: "Home",
-  components: { MyPoster },
+  components: { MyPoster, SimpleCard },
   methods: {},
   computed: {
     ...mapState({
@@ -33,6 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .part {
+  margin: 20px 20px 20px 20px;
   display: flex;
   justify-content: center;
   width: 1200px;

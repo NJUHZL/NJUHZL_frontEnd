@@ -24,7 +24,7 @@ export default new Router({
         {
           name: "home",
           path: "home",
-          component: () => import("@/views/Home")
+          component: () => import("@/views/Home.vue")
         }
       ]
     }
