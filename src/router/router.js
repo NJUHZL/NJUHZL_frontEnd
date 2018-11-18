@@ -23,22 +23,10 @@ export default new Router({
       children: [
         {
           name: "home",
-          path: "home",
-          component: () => import("@/views/Home")
+          path: "",
+          component: () => import("@/views/Home.vue")
         }
       ]
-    },
-
-      {
-          path: "/",
-          component: () => import("@/layout/defaultLayout"),
-          children: [
-              {
-                  name: "homepage",
-                  path: "homepage",
-                  component: () => import("@/views/homepage")
-              }
-          ]
-      },
+    }
   ]
 });

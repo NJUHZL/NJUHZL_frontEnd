@@ -21,7 +21,16 @@ import {
   RadioGroup,
   RadioButton,
   Carousel,
-  CarouselItem
+  CarouselItem,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup,
+  Select,
+  Loading
 } from "element-ui";
 
 Vue.use(Button);
@@ -44,6 +53,16 @@ Vue.use(RadioGroup);
 Vue.use(RadioButton);
 Vue.use(Carousel);
 Vue.use(CarouselItem);
+Vue.use(Dropdown);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
+Vue.use(MenuItemGroup);
+Vue.use(Select);
+
+Vue.use(Loading.directive);
 
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
