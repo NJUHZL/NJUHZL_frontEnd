@@ -23,20 +23,19 @@ export default {
     }
   },
   data() {
-    return ({
-      pictureUrl : require("../../assets/pictures/"+ this.picture)
-    })
+    return {
+      pictureUrl: require("../../assets/pictures/" + this.picture)
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/style/default.scss';
+@import "@/style/default.scss";
 
 .main {
-  border: 2px solid black;
   width: 200px;
-  height: 200px;
+  height: 280px;
   position: relative;
   border-radius: $default-border-radius;
   box-shadow: $default-box-shadow;
@@ -48,15 +47,18 @@ export default {
   overflow: hidden;
   background-color: aquamarine;
   img {
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 280px;
   }
 }
 
 .title {
   position: absolute;
   top: 50px;
+  left: 43px;
   display: flex;
   justify-content: center;
+  font-size: $font-size-h3;
+  color: lightseagreen;
 }
 </style>

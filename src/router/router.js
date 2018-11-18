@@ -18,21 +18,15 @@ export default new Router({
       ]
     },
     {
-      path: "/home",
+      path: "/",
       component: () => import("@/layout/defaultLayout"),
       children: [
         {
           name: "home",
-          path: "home",
+          path: "",
           component: () => import("@/views/Home.vue")
         }
       ]
-    },
-
-    {
-      name: "homepage",
-      path: "/",
-      component: () => import("@/views/homepage")
     }
   ]
 });
