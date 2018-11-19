@@ -10,18 +10,16 @@
             </div>
 
         </div>
-        <img src="../assets/img/hzl_logo.png" style="width: 8%;position: fixed;top:20px;left: 6%">
+        <a href="/"><img src="../assets/img/hzl_logo.png" style="width: 8%;position: fixed;top:20px;left: 6%"></a>
     </div>
 </template>
 
 <script>
 export default {
   name: "login",
-    methods:{
-        login: function () {
-
-        }
-    }
+  methods: {
+    login: function() {}
+  }
 };
 </script>
 
