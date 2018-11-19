@@ -1,31 +1,40 @@
 import * as ACTIONS from "@/store/type/actions";
 import * as MUTATIONS from "@/store/type/mutations";
-import { fetchHotPassage } from "@/api/passageService";
+import { fetchHotNews } from "@/api/rightNaviService";
+import { fetchLatestComments } from "@/api/rightNaviService";
 
 //State
 const state = {
-    hotPassage: []
+  hotNews: [],
+  latestComments: []
 };
 
 //Action
 const actions = {
-    //获得热点走马灯文章
-    async [ACTIONS.FETCH_HOT_PASSAGE](context) {
-        const result = await fetchHotPassage();
-        context.commit(MUTATIONS.SET_HOT_PASSAGE, result.data);
-    }
+  //获得热点走马灯文章
+  async [ACTIONS.FETCH_HOT_NEWS](context) {
+    const result = await fetchHotNews();
+    context.commit(MUTATIONS.SET_HOT_NEWS, result.data);
+  },
+  async [ACTIONS.FETCH_LATEST_COMMENTS](context) {
+    const result = await fetchLatestComments();
+    context.commit(MUTATIONS.SET_LATEST_COMMENTS, result.data);
+  }
 };
 
 //Mutation
 const mutations = {
-    //设置热点走马灯文章
-    [MUTATIONS.SET_HOT_PASSAGE](state, result) {
-        state.hotPassage = result;
-    }
+  //设置热点走马灯文章
+  [MUTATIONS.SET_HOT_NEWS](state, result) {
+    state.hotNews = result;
+  },
+  [MUTATIONS.SET_LATEST_COMMENTS](state, result) {
+    state.latestComments = result;
+  }
 };
 
 export default {
-    state,
-    actions,
-    mutations
+  state,
+  actions,
+  mutations
 };
