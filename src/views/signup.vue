@@ -3,11 +3,13 @@
     <div class="mainbox">
       <div class="mainbody">
         <h3 style="color: white;float: top;" align="center">注册</h3>
-        <input id="nickname" type="text" style="margin-top: 20px;" align="center" placeholder="请输入昵称，长度在2到15个字符之间"><br>
-        <input id="password" type="password" style="margin-top: 20px;" align="center" placeholder="请输入密码，长度在6到20个字符之间"><br>
-        <input id="passwordConfirm" type="password" style="margin-top: 20px;" align="center" placeholder="确认密码"><br>
-        <input id="email" type="text" style="margin-top: 20px" placeholder="请输入邮箱地址">
-        <button id="signup" class="bigButton" v-on:click="signup()">注册</button><br>
+        <input id="nickname" type="text" style="margin-top: 20px;" align="center" placeholder="请输入昵称，长度在2到15个字符之间" v-model="nickname"><br>
+        <input id="password" type="password" style="margin-top: 20px;" align="center" placeholder="请输入密码，长度在6到20个字符之间" v-model="password"><br>
+        <input id="passwordConfirm" type="password" style="margin-top: 20px;" align="center" placeholder="确认密码" v-model="passwordConfirm"><br>
+        <input id="email" type="text" style="margin-top: 20px" placeholder="请输入邮箱地址" v-model="email">
+        <input id="identifyCode" type="text" style="margin-top: 20px;width: 40%" placeholder="请输入验证码" v-model="identifyCode">
+        <button id="sendEmail" v-on:click="sendEmail()">注册</button><br>
+        <button id="signup" class="bigButton" v-on:click="register()">注册</button><br>
         <div style="width: 100%;text-align: center;margin-top: 20px">
           <a href="/login" style="font-size: 16px;color: yellow;">已有账号，立即登录</a>
         </div>
@@ -20,15 +22,27 @@
 </template>
 
 <script>
+import { REGISTER } from "@/store/type/actions";
+import { REGISTER_IDENTIFY } from "@/store/type/actions";
+
 export default {
   name: "signup",
+  data() {
+    return {
+      nickname: "",
+      password: "",
+      passwordConfirm: "",
+      email: "",
+      identifyCode: ""
+    };
+  },
   mounted: function() {
     $("#account").change(function() {
-      if ($("#account").val().length < 2) {
+      if (this.nickname.length < 2) {
         alert("用户名长度过短");
         $("#signup").attr("disabled", true);
         this.focus();
-      } else if ($("#account").val().length > 15) {
+      } else if (this.nickname.length > 15) {
         alert("用户名长度过长");
         $("#signup").attr("disabled", true);
         this.focus();
@@ -37,11 +51,11 @@ export default {
       }
     });
     $("#password").change(function() {
-      if ($("#password").val().length < 6) {
+      if (this.password.length < 6) {
         alert("密码长度过短");
         $("#signup").attr("disabled", true);
         this.focus();
-      } else if ($("#password").val().length > 20) {
+      } else if (this.password.length > 20) {
         alert("密码长度过长");
         $("#signup").attr("disabled", true);
         this.focus();
@@ -50,7 +64,7 @@ export default {
       }
     });
     $("#passwordConfirm").change(function() {
-      if ($("#passwordConfirm").val() != $("#password").val()) {
+      if (this.passwordConfirm != this.password) {
         alert("密码前后不一致");
         $("#signup").attr("disabled", true);
         this.focus();
@@ -61,91 +75,51 @@ export default {
   },
 
   methods: {
-    signup: function() {
-      var ac = $("#account").val();
-      var pw = $("#password").val();
-      var phone = $("#phone").val();
-      var email = $("#email").val();
-      this.$axios
-        .post("user/signup", {
-          account: ac,
-          password: pw,
-          phone: phone,
-          email: email
-        })
-        .then(res => {
-          var data = res.data;
-          if (data.result == 1) {
-            alert("注册成功!");
-            this.$router.replace("/login");
-          } else if (data.result == 2) {
-            alert("用户名重复，请另取");
-            $("account").focus();
-          } else {
-            alert("请重试");
-          }
-        })
-        .catch(err => {
-          console.log(err);
+    register: async function() {
+      await this.$store.dispatch(REGISTER, {
+        email: this.email,
+        nickname: this.nickname,
+        password: this.password,
+        indentifyCode: this.indentifyCode
+      });
+      if (this.errors) {
+        //fail to login
+        this.$message({
+          message: "注册失败",
+          type: "error"
         });
+      } else {
+        //success
+        this.$router.push({ name: "login" });
+      }
     },
-    sendEmail: function() {
-      var email = $("#email").val();
-      this.$axios
-        .post("http://localhost:8000/api/auth/signup/sendEmail", {
-          email: email
-        })
-        .then(res => {
-          var data = res.data;
-          if (data.result == 1) {
-            $("#sendEmail").attr("disabled", true);
-            var time = 60;
-            var myScroll = setInterval(() => {
-              time--;
-              if (time >= 0) {
-                $("#sendEmail").html(time + "s后重发送");
-              } else {
-                $("#sendEmail").html("发送验证码");
-                $("#sendEmail").attr("disabled", false); //倒计时结束能够重新点击发送的按钮
-                clearTimeout(myScroll); //清除定时器
-                time = 60; //设置循环重新开始条件
-              }
-            }, 1000);
-          } else if (data.result == 2) {
-            alert("邮箱地址有误");
-          } else {
-            alert("发送失败");
-          }
+
+    sendEmail: async function() {
+      await this.$store.dispatch(REGISTER_IDENTIFY, {
+        user_email: this.email
+      });
+      if (this.errors) {
+        //fail to login
+        this.$message({
+          message: "发送失败，请检查邮箱正确性",
+          type: "error"
         });
-    },
-    sendMessage: function() {
-      var phone = $("#phone").val();
-      this.$axios
-        .post("http://localhost:8000/api/auth/signup/sendMessage", {
-          phone: phone
-        })
-        .then(res => {
-          var data = res.data;
-          if (data.result == 1) {
-            $("#sendMessage").attr("disabled", true);
-            var time = 60;
-            var myScroll = setInterval(() => {
-              time--;
-              if (time >= 0) {
-                $("#sendMessage").html(time + "s后重发送");
-              } else {
-                $("#sendMessage").html("发送验证码");
-                $("#sendMessage").attr("disabled", false); //倒计时结束能够重新点击发送的按钮
-                clearTimeout(myScroll); //清除定时器
-                time = 60; //设置循环重新开始条件
-              }
-            }, 1000);
-          } else if (data.result == 2) {
-            alert("手机号码有误");
+      } else {
+        //success
+        $("#sendEmail").attr("disabled", true);
+        let time = 60;
+        let myScroll = setInterval(() => {
+          time--;
+          if (time >= 0) {
+            $("#sendEmail").html(time + "s后可重发送");
           } else {
-            alert("发送失败");
+            $("#sendEmail").html("发送验证码");
+            $("#sendEmail").attr("disabled", false); //倒计时结束能够重新点击发送的按钮
+            clearTimeout(myScroll); //清除定时器
+            time = 60; //设置循环重新开始条件
           }
-        });
+        }, 1000);
+      }
     }
   }
 };
@@ -171,7 +145,7 @@ export default {
 
 .mainbody {
   width: 36%;
-  height: 425px;
+  height: 525px;
   position: relative;
   margin: auto;
   padding: 35px 30px;
