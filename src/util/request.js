@@ -1,6 +1,6 @@
+import { setToken, getToken } from "./token";
 /**
  * Requests a URL, returning a promise.
- *
  * @param  {string} url       The URL we want to request
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
@@ -31,17 +31,18 @@ export default async function request(url, options) {
     }
   }
 
+  newOptions.headers = {
+    authorization: "Bearer" + getToken(),
+    ...newOptions.headers
+  };
+
   const response = await fetch(url, newOptions);
 
   if (newOptions.method === "DELETE" || response.status === 204) {
     return response.text();
   }
 
-  const Authorization = await response.headers.get("Authorization");
   const body = await response.json();
-  const _header = {
-    Authorization
-  };
 
-  return { ...body, _header };
+  return body;
 }

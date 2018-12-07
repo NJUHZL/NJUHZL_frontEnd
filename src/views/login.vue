@@ -1,24 +1,63 @@
 <template>
-    <div id="loginBody">
-        <div class="mainbody">
-            <h3 align="center">登录</h3>
-            <input id="account" type="text" placeholder="请输入账户"><br>
-            <input id="password" type="password" align="center" placeholder="请输入密码"><br>
-            <button id="login" v-on:click="login()">登录</button><br>
-            <div style="width: 100%;text-align: center;margin-top: 16px">
-                <a href='/signup' style="font-size: 16px;color: yellow;">即刻注册</a>
-            </div>
-
-        </div>
-        <a href="/"><img src="../assets/img/hzl_logo.png" style="width: 8%;position: fixed;top:20px;left: 6%"></a>
+  <div id="loginBody">
+    <div class="mainbody">
+      <h3 align="center">登录</h3>
+      <input id="account" type="text" placeholder="请输入账户" v-model="accountText">
+      <br>
+      <input
+        id="password"
+        type="password"
+        align="center"
+        placeholder="请输入密码"
+        v-model="passwordText"
+      >
+      <br>
+      <button id="login" v-on:click="login()">登录</button>
+      <br>
+      <div style="width: 100%;text-align: center;margin-top: 16px">
+        <a href="/signup" style="font-size: 16px;color: yellow;">即刻注册</a>
+      </div>
     </div>
+    <a href="/">
+      <img src="../assets/img/hzl_logo.png" style="width: 8%;position: fixed;top:20px;left: 6%">
+    </a>
+  </div>
 </template>
 
 <script>
+import { LOGIN } from "@/store/type/actions";
+import { mapState } from "vuex";
 export default {
   name: "login",
+  data() {
+    return {
+      accountText: "",
+      passwordText: ""
+    };
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.user.isLoginError
+    })
+  },
   methods: {
-    login: function() {}
+    login: async function() {
+      await this.$store.dispatch(LOGIN, {
+        email: this.accountText,
+        password: this.passwordText
+      });
+      if (this.errors) {
+        //fail to login
+        this.$message({
+          message: "用户名或密码错误",
+          type: "error"
+        });
+        this.passwordText = "";
+      } else {
+        //success
+        this.$router.push({ name: "home" });
+      }
+    }
   }
 };
 </script>

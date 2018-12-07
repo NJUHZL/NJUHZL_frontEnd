@@ -13,6 +13,7 @@ export default new Router({
         {
           name: "register",
           path: "register",
+          meta: { requireAuth: true },
           component: () => import("@/views/Register")
         }
       ]
@@ -24,6 +25,7 @@ export default new Router({
         {
           name: "home",
           path: "",
+          meta: { requireAuth: true },
           component: () => import("@/views/Home.vue")
         }
       ]
@@ -31,11 +33,13 @@ export default new Router({
     {
       path: "/login",
       name: "login",
+      meta: { requireAuth: false },
       component: () => import("@/views/login.vue")
     },
     {
       path: "/signup",
       name: "signup",
+      meta: { requireAuth: false },
       component: () => import("@/views/signup.vue")
     }
   ]
