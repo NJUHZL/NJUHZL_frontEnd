@@ -1,14 +1,14 @@
 <template>
   <div class="main">
     <div class="align-right">
-      <div class="header">{{header}}</div>
+      <div class="header">{{title}}</div>
       <div class="divider">
         <div class="blue-style">{{newsSource}} {{newsClass}}</div>
         <div class="plain-style">{{postTime}}</div>
       </div>
       <div class="content">
         <img class="picture" v-bind:src="pictureURL">
-        <div class="text">{{text}}</div>
+        <div class="text">{{contentShort}}</div>
       </div>
       <div class="footer">
         <div class="left">
@@ -32,11 +32,11 @@
 export default {
   name: "newsItem",
   props: {
-    header: {
+    title: {
       type: String,
       default: "这是新闻的标题"
     },
-    text: {
+    contentShort: {
       type: String,
       default:
         "是你的看你发的吃你的尺度回复地方还是看得出你快点是你的看你发的吃你的尺度回复地方还是看得出你快点是你的看你发的吃你的尺度回复地方还是看得出你快点"
@@ -86,7 +86,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   max-width: 650px;
-  max-height: 350px;
+  max-height: 360px;
   .align-right {
     display: flex;
     flex-direction: column;
@@ -142,6 +142,7 @@ export default {
           background-color: rgb(89, 181, 224);
           border: 1px rgb(89, 181, 224) outset;
           border-radius: 3px;
+          text-align: center;
         }
         .keywords {
           flex-shrink: 0;
