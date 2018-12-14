@@ -27,6 +27,12 @@ export default new Router({
           path: "",
           meta: { requireAuth: true },
           component: () => import("@/views/Home.vue")
+        },
+        {
+          name: "news",
+          path: "/news",
+          meta: { requireAuth: true },
+          component: () => import("@/views/News/index.vue")
         }
       ]
     },

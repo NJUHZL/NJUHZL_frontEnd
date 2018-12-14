@@ -16,29 +16,14 @@
           <img src="../assets/img/hzl_logo.png" style="width: 58px">
         </a>
       </el-menu-item>
-      <el-submenu index="2" id="classify">
-        <template slot="title">热闻</template>
-        <el-menu-item index="2-1">
-          <a href="/">教育</a>
-        </el-menu-item>
-        <el-menu-item index="2-2">
-          <a href="/">经济</a>
-        </el-menu-item>
-        <el-menu-item index="2-3">
-          <a href="/">娱乐</a>
-        </el-menu-item>
-        <el-menu-item index="2-3">
-          <a href="/">生态</a>
-        </el-menu-item>
-      </el-submenu>
       <el-menu-item id="evaluate" index="3">
-        <a href="/">评估</a>
+        <a href="/">首页</a>
       </el-menu-item>
       <el-menu-item id="guide" index="4">
-        <a href="/">指南</a>
+        <a href="/news">新闻</a>
       </el-menu-item>
-      <el-menu-item index="5" disabled>
-        <a href="/">消息</a>
+      <el-menu-item index="5">
+        <a href="/">课程</a>
       </el-menu-item>
       <el-menu-item index="6" style="float: right" id="login">
         <a href="/login">登录</a>
@@ -68,6 +53,7 @@ export default {
 <style scoped>
 .whole {
   z-index: 10;
+  background-color: #1a1818;
 }
 a {
   text-decoration: none;
