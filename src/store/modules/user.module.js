@@ -1,6 +1,6 @@
 import * as ACTIONS from "@/store/type/actions";
 import * as MUTATIONS from "@/store/type/mutations";
-import { registerIdentify, login } from "@/api/userService";
+import { registerIdentify, login, register } from "@/api/userService";
 import { setToken, getToken } from "@/util/token";
 
 //State
@@ -30,6 +30,10 @@ const actions = {
       context.commit(MUTATIONS.SET_LOGIN_ERROR, true);
       context.commit(MUTATIONS.SET_AUTH, false);
     }
+  },
+  async [ACTIONS.REGISTER](context, info) {
+    const result = await register(info);
+    context.commit(MUTATIONS.REGISTER, result);
   }
 };
 
@@ -37,12 +41,16 @@ const actions = {
 const mutations = {
   [MUTATIONS.REGISTER_IDENTIFY](state, result) {
     state.identifyCodeHasSend = result;
+    console.log("1" + state.identifyCodeHasSend);
   },
   [MUTATIONS.SET_AUTH](state, isAuthenticated) {
     state.isAuthenticated = isAuthenticated;
   },
   [MUTATIONS.SET_LOGIN_ERROR](state, isError) {
     state.isLoginError = isError;
+  },
+  [MUTATIONS.REGISTER_IDENTIFY](state, result) {
+    state.registerResult = result;
   }
 };
 

@@ -8,7 +8,7 @@
         <input id="passwordConfirm" type="password" style="margin-top: 20px;" align="center" placeholder="确认密码" v-model="passwordConfirm"><br>
         <input id="email" type="text" style="margin-top: 20px" placeholder="请输入邮箱地址" v-model="email">
         <input id="identifyCode" type="text" style="margin-top: 20px;width: 40%" placeholder="请输入验证码" v-model="identifyCode">
-        <button id="sendEmail" v-on:click="sendEmail()">注册</button><br>
+        <button id="sendEmail" v-on:click="sendEmail()">获取验证码</button><br>
         <button id="signup" class="bigButton" v-on:click="register()">注册</button><br>
         <div style="width: 100%;text-align: center;margin-top: 20px">
           <a href="/login" style="font-size: 16px;color: yellow;">已有账号，立即登录</a>
@@ -24,6 +24,7 @@
 <script>
 import { REGISTER } from "@/store/type/actions";
 import { REGISTER_IDENTIFY } from "@/store/type/actions";
+import { mapState } from "vuex";
 
 export default {
   name: "signup",
@@ -36,13 +37,21 @@ export default {
       identifyCode: ""
     };
   },
+  computed: {
+    ...mapState({
+      registerResult: state => state.user.registerResult,
+      identifyCodeHasSend: state => state.user.identifyCodeHasSend
+    })
+  },
   mounted: function() {
-    $("#account").change(function() {
-      if (this.nickname.length < 2) {
+    let that = this;
+    $("#nickname").change(function() {
+      console.log(that.nickname);
+      if (that.nickname.length < 2) {
         alert("用户名长度过短");
         $("#signup").attr("disabled", true);
         this.focus();
-      } else if (this.nickname.length > 15) {
+      } else if (that.nickname.length > 15) {
         alert("用户名长度过长");
         $("#signup").attr("disabled", true);
         this.focus();
@@ -51,11 +60,12 @@ export default {
       }
     });
     $("#password").change(function() {
-      if (this.password.length < 6) {
+      console.log(that.password);
+      if (that.password.length < 6) {
         alert("密码长度过短");
         $("#signup").attr("disabled", true);
         this.focus();
-      } else if (this.password.length > 20) {
+      } else if (that.password.length > 20) {
         alert("密码长度过长");
         $("#signup").attr("disabled", true);
         this.focus();
@@ -64,7 +74,7 @@ export default {
       }
     });
     $("#passwordConfirm").change(function() {
-      if (this.passwordConfirm != this.password) {
+      if (that.passwordConfirm != that.password) {
         alert("密码前后不一致");
         $("#signup").attr("disabled", true);
         this.focus();
@@ -82,14 +92,24 @@ export default {
         password: this.password,
         indentifyCode: this.indentifyCode
       });
-      if (this.errors) {
+      if (this.registerResult === 1) {
         //fail to login
         this.$message({
-          message: "注册失败",
+          message: "验证码错误",
+          type: "error"
+        });
+      } else if (this.registerResult === 2) {
+        //fail to login
+        this.$message({
+          message: "邮箱已注册",
           type: "error"
         });
       } else {
         //success
+        this.$message({
+          message: "注册成功",
+          type: "success"
+        });
         this.$router.push({ name: "login" });
       }
     },
@@ -98,8 +118,8 @@ export default {
       await this.$store.dispatch(REGISTER_IDENTIFY, {
         user_email: this.email
       });
-      if (this.errors) {
-        //fail to login
+      console.log(this.identifyCodeHasSend);
+      if (this.identifyCodeHasSend === 0) {
         this.$message({
           message: "发送失败，请检查邮箱正确性",
           type: "error"
