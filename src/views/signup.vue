@@ -118,7 +118,7 @@ export default {
       await this.$store.dispatch(REGISTER_IDENTIFY, {
         user_email: this.email
       });
-      console.log(this.identifyCodeHasSend);
+      console.log("SIGN UP: "+this.identifyCodeHasSend);
       if (this.identifyCodeHasSend === 0) {
         this.$message({
           message: "发送失败，请检查邮箱正确性",

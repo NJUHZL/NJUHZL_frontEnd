@@ -41,16 +41,12 @@ const actions = {
 const mutations = {
   [MUTATIONS.REGISTER_IDENTIFY](state, result) {
     state.identifyCodeHasSend = result;
-    console.log("1" + state.identifyCodeHasSend);
   },
   [MUTATIONS.SET_AUTH](state, isAuthenticated) {
     state.isAuthenticated = isAuthenticated;
   },
   [MUTATIONS.SET_LOGIN_ERROR](state, isError) {
     state.isLoginError = isError;
-  },
-  [MUTATIONS.REGISTER_IDENTIFY](state, result) {
-    state.registerResult = result;
   }
 };
 
