@@ -16,17 +16,17 @@ export default {
   components: { navi, banner, rightNavi },
   mounted: function() {
     $("#nav").css("position", "absolute");
-    let beginY = $("#rightNavi").offset().top;
-    console.log("top:" + beginY);
-    $(window).on("scroll", function() {
-      if ($(window).scrollTop() > beginY - 30) {
-        $("#rightNavi").css("position", "fixed");
-        console.log("f");
-      } else {
-        //$("#rightNavi").css("position", "relative");
-        //console.log("r");
-      }
-    });
+    // let beginY = $("#rightNavi").offset().top;
+    // console.log("top:" + beginY);
+    // $(window).on("scroll", function() {
+    //   if ($(window).scrollTop() > beginY - 30) {
+    //     $("#rightNavi").css("position", "fixed");
+    //     console.log("f");
+    //   } else {
+    //     //$("#rightNavi").css("position", "relative");
+    //     //console.log("r");
+    //   }
+    // });
   }
 };
 </script>

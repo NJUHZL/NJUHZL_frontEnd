@@ -30,6 +30,8 @@ import {
   MenuItem,
   MenuItemGroup,
   Select,
+  Table,
+  TableColumn,
   Loading
 } from "element-ui";
 
@@ -61,7 +63,8 @@ Vue.use(Submenu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
 Vue.use(Select);
-
+Vue.use(Table);
+Vue.use(TableColumn);
 Vue.use(Loading.directive);
 
 Vue.prototype.$notify = Notification;

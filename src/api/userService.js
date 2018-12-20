@@ -29,3 +29,13 @@ export const register = ({ email, nickname, password, indentifyCode }) => {
     }
   });
 };
+
+export const login = ({ email, password }) => {
+  return request(`${USER_MODULE}/login`, {
+    method: "POST",
+    body: {
+      email: email,
+      password: password
+    }
+  });
+};

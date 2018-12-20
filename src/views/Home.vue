@@ -2,28 +2,63 @@
   <div>
     <banner class="banner"/>
     <div class="page-content">
-      <div class="page-width-item">
-        <my-poster class="max-width-item" v-bind:passageList="hotPassage"/>
+      <div style="text-align: center">
+        <div class="el-card is-always-shadow function-card">
+          <img src="../assets/img/loginBackground.jpg"/>
+        </div>
+        <div class="el-card is-always-shadow function-card">
+          <img src="../assets/img/loginBackground.jpg"/>
+        </div>
+        <div class="el-card is-always-shadow function-card">
+          <img src="../assets/img/loginBackground.jpg"/>
+        </div>
+        <div class="el-card is-always-shadow function-card">
+          <img src="../assets/img/loginBackground.jpg"/>
+        </div>
       </div>
-      <div class="page-width-item">
-        <simple-card title="事实核查" picture="sshc.jpg" class="multi-item"/>
-        <simple-card title="事实核查" picture="yjzx.jpg" class="multi-item"/>
-        <simple-card title="事实核查" picture="zlbg.jpg" class="multi-item"/>
+    </div>
+    <carousel style="margin-top: 90px"></carousel>
+    <div style="margin-left: 10%;margin-top: 80px">
+      <abstract></abstract>
+      <abstract></abstract>
+      <abstract></abstract>
+      <img style="width: 2%;display: inline-block;vertical-align: top;padding-top: 10px" src="../assets/img/commentIcon.png">
+      <div style="width: 18%;display: inline-block;vertical-align: top">
+        <recommendComment></recommendComment>
+        <recommendComment></recommendComment>
+      </div>
+    </div>
+    <div style="text-align: center;margin-top: 50px">
+      <div class="introBlock">
+        <h2><i class="el-icon-success" style="color: lightblue"></i>  新闻核实</h2>
+        <p>“核真录”始终免费开放的功能，为公众提供免费的新闻核实、查验服务，对各种假新闻、错误信息、谣言等进行核查和澄清。</p>
+        <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
+      </div>
+      <div class="introBlock">
+        <h2><i class="el-icon-success" style="color: lightblue"></i>  课程培训</h2>
+        <p>“核真录”开拓新闻素养课程培训作为会员订阅付费内容，我们将长期连续提供专业的新闻素养教学课程及实施案例分析。</p>
+        <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
+      </div>
+      <div class="introBlock">
+        <h2><i class="el-icon-success" style="color: lightblue"></i>  行研报告</h2>
+        <p>“核真录”开拓媒介研究报告作为会员订阅付费内容，我们将以会员付费订阅的方式定期向订阅的会员推送最前沿的媒介研究报告。</p>
+        <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MyPoster from "@/components/MyPoster/index.vue";
-import SimpleCard from "@/components/SimpleCard/index.vue";
 import banner from "@/components/banner.vue";
+import carousel from "@/components/carousel.vue";
+import abstract from "@/components/abstract.vue";
+import recommendComment from "@/components/recommendComment.vue";
 import { mapState } from "vuex";
 import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
 
 export default {
   name: "Home",
-  components: { MyPoster, SimpleCard, banner },
+  components: { banner, carousel, abstract, recommendComment },
   methods: {},
   computed: {
     ...mapState({
@@ -34,6 +69,7 @@ export default {
   async mounted() {
     //挂载后拉取数据
     await this.$store.dispatch(FETCH_HOT_PASSAGE);
+    $("#nav").css("backgroundColor", "transparent");
   }
 };
 </script>
@@ -51,19 +87,44 @@ export default {
   max-width: 100%;
   margin: 20px 40px;
 }
-.page-width-item {
-  display: flex;
-  justify-content: center;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 20px;
 
-  .max-width-item {
-    flex-grow: 1;
-  }
+.function-card {
+  width: 20%;
+  text-align: center;
+  display: inline-block;
+  padding: 2px;
+  height: 135px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
 
-  .multi-item {
-    margin: 0 60px;
-  }
+.function-card img {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.introBlock {
+  width: 22.5%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  display: inline-block;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.introBlock a {
+  font-size: 12px;
+  color: #036e8b;
+  float: left;
+}
+
+.introBlock h2 {
+  padding-right: 30px;
+}
+
+p {
+  text-align: left;
+  color: #898989;
 }
 </style>

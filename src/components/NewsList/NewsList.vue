@@ -15,21 +15,21 @@ export default {
   data() {
     return {
       NewsArray: [],
-      Load:function(_this){
+      Load: function(_this) {
         _this.$axios
           .get(
             "https://www.easy-mock.com/mock/5beace67e551c21d755b9693/simplenews"
           )
           .then(function(response) {
             console.log(_this.NewsArray);
-            for(var i=0;i<5;i++)
+            for (var i = 0; i < 5; i++)
               _this.NewsArray.push(response.data.data[i]);
             console.log(_this.NewsArray);
           })
           .catch(function(error) {
             console.log(error);
           });
-      },
+      }
     };
   },
 
@@ -37,8 +37,8 @@ export default {
     NewsIntro
   },
 
-  methods:{
-    LoadMore:function(){
+  methods: {
+    LoadMore: function() {
       console.log("加载成功");
       this.Load(this);
     }
@@ -62,13 +62,13 @@ export default {
   height: 1000px;
   /*border: 1px solid black;*/
 }
-.load-more{
+.load-more {
   border: 0;
   background-color: #595757;
   color: #fff;
   font-size: 18px;
   width: 30%;
   margin-left: 35%;
-  height:50px;
+  height: 50px;
 }
 </style>

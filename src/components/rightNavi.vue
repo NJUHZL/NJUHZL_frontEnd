@@ -7,7 +7,7 @@
             @open="handleOpen"
             @close="handleClose"
             unique-opened="true"
-    style="float: right;right: 100px;top:30px;box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);z-index: 3">
+    style="float: right;right: 100px;top:30px;box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);z-index: 3;position: sticky">
         <el-submenu index="1">
             <template slot="title">
                 <i class="el-icon-news"></i>
