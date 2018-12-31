@@ -1,39 +1,9 @@
 <template>
   <div class="main">
     <div class="navi">
-      <img class="logo" :src="logoURL">
-      <el-menu default-active="1" @select="fetchOneClassOfPassageList">
-        <el-menu-item index="sshc">
-          <div class="menu-item">
-            <div>事实核查</div>
-            <div class="number">1</div>
-          </div>
-        </el-menu-item>
-        <el-menu-item index="kshxw">
-          <div class="menu-item">
-            <div>可视化新闻</div>
-            <div class="number">1</div>
-          </div>
-        </el-menu-item>
-        <el-menu-item index="yjzx">
-          <div class="menu-item">
-            <div>研究中心</div>
-            <div class="number">1</div>
-          </div>
-        </el-menu-item>
-        <el-menu-item index="zlbg">
-          <div class="menu-item">
-            <div>每周质量报告</div>
-            <div class="number">1</div>
-          </div>
-        </el-menu-item>
-      </el-menu>
+      <left-navi/>
     </div>
     <div class="items">
-      <news-item></news-item>
-      <news-item></news-item>
-      <news-item></news-item>
-      <news-item></news-item>
       <news-item
         v-for="(item, index) in oneClassOfPassageList"
         v-bind:key="index"
@@ -48,6 +18,7 @@
 
 <script>
 import NewsItem from "./components/newsItem";
+import LeftNavi from "../../components/LeftNavi";
 import { mapState } from "vuex";
 import {
   FETCH_ONE_CLASS_OF_PASSAGE_LIST,
@@ -56,7 +27,7 @@ import {
 
 export default {
   name: "News",
-  components: { NewsItem },
+  components: { NewsItem, LeftNavi },
   data() {
     return {
       logoURL: require("../../assets/img/realistic.png")
@@ -75,8 +46,11 @@ export default {
     }
   },
   async mounted() {
-    await this.$store.dispatch(FETCH_ONE_CLASS_OF_PASSAGE_LIST, "sshc");
-    await this.$store.dispatch(SET_CURRENT_CLASS, "sshc");
+    await this.$store.dispatch(
+      FETCH_ONE_CLASS_OF_PASSAGE_LIST,
+      this.currentClass
+    );
+    await this.$store.dispatch(SET_CURRENT_CLASS, this.currentClass);
   }
 };
 </script>
@@ -84,27 +58,14 @@ export default {
 <style lang="scss" scoped>
 .main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 30px 50px;
   .navi {
-    width: 250px;
-    height: 200px;
-    margin-left: 80px;
-    display: flex;
-    flex-direction: column;
-    .logo {
-      width: 200px;
-    }
-    .menu-item {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      .number {
-      }
-    }
+    max-width: 250px;
+    max-height: 200px;
   }
   .items {
-    margin-right: 300px;
+    margin: 0 150px;
   }
 }
 </style>
