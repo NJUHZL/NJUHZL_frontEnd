@@ -44,104 +44,21 @@ export default {
   },
   data() {
     return {
-      pageInfo:{
-        passageID:"xxx",
-        title:"南京大学软件学院迎新晚会",
-        newsSource: "南京大学网站",
-        newsClass: "事实核查",
-        postDate: "2018-12-12",
-        postTime: "12:30",
-        keyword:"关键词",
-        pictureURL:["a.png","b.png","c.png"],
-        content:"<p>中央军委军事工作会议4日在京召开。中共中央总书记、国家主席、中央军委主席习近平出席会议并发表重要讲话。习近平强调，全军要坚持以新时代中国特色社会主义思想为指导，深入贯彻党的十九大和十九届二中、三中全会精神，深入贯彻新时代党的强军思想，深入贯彻新时代军事战略方针，在新的起点上做好军事斗争准备工作，开创强军事业新局面。</p>  <p>习近平在讲话中指出，党的十八大以来，面对错综复杂的国内外形势和艰巨繁重的军事任务，党中央和中央军委审时度势、统揽全局，带领全军锐意进取、攻坚克难，军事工作在斗争中加强、在创新中发展，取得许多标志性、开创性、历史性重大成就。全军以坚定意志品质、灵活战略策略、有力军事行动，坚决维护国家主权、安全、发展利益，经受住了复杂形势和严峻斗争考验。 </p> <p>习近平强调，当今世界正面临百年未有之大变局，我国发展仍处于重要战略机遇期，同时各种可以预料和难以预料的风险挑战增多。全军要正确认识和把握我国安全和发展大势，强化忧患意识、危机意识、打仗意识，扎扎实实做好军事斗争准备各项工作，坚决完成党和人民赋予的使命任务。</p><p>习近平指出，要把新时代军事战略思想立起来，把新时代军事战略方针立起来，把备战打仗指挥棒立起来，把抓备战打仗的责任担当立起来。要强化战斗队思想，坚持战斗力这个唯一的根本的标准，各项工作和建设、各方面力量和资源都要聚焦军事斗争准备、服务军事斗争准备，推动军事斗争准备工作有一个很大加强。</p><p>习近平强调，要深化战争和作战筹划，确保一旦有事能快速有效应对。要加快推进联合作战指挥体系建设，提升联合作战指挥能力。要加强新型作战力量建设，增加新质战斗力比重。要大抓实战化军事训练，提高练兵备战质量和水平。要坚持问题导向，对突出短板弱项要扭住不放、持续用力，一个问题一个问题解决，确保取得成效。</p> <p>习近平指出，中央和国家机关各部门、地方各级党委和政府要支持国防和军队建设，共同把我们这支英雄的人民军队建设得更加强大、更有战斗力。</p><p>中共中央政治局委员、中央军委副主席许其亮主持会议。中共中央政治局委员、中央军委副主席张又侠宣读《中央军委关于表彰全军备战标兵单位和个人的通报》，表彰10个全军备战标兵单位、20名全军备战标兵个人。习近平等为受表彰对象颁奖。</p><p>中央军委委员魏凤和、李作成、苗华、张升民出席会议。军委机关各部门、全军各大单位负责同志等参加会议。</p>",
-        comments:[
-            {
-                userID:"蜘蛛侠",
-                userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg", //用户头像图片
-                postDate:"2019-1-6 11:46:00",
-                content:"吃葡萄不吐葡萄皮，不吃葡萄到吐葡萄皮",
-                secondComments:[
-                {
-                    userID:"小蜘蛛侠",
-                    userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg",
-                    postDate:"2019-1-6 8:25",
-                    content:"评论内容",
-                },
-                {
-                    userID:"小蜘蛛侠",
-                    userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg",
-                    postDate:"2018-12-12 15:35",
-                    content:"评论内容",
-                },
-                {
-                    userID:"小蜘蛛侠",
-                    userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg",
-                    postDate:"2018-12-12 15:35",
-                    content:"评论内容",
-                }
-                ]  //楼中楼评论
-            },
-            {
-                userID:"蜘蛛侠",
-                userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg", //用户头像图片
-                postDate:"2018-12-12 12:30:00",
-                content:"评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容",
-                secondComments:[
-                {
-                    userID:"小蜘蛛侠",
-                    userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg",
-                    postDate:"2018-12-12 15:35",
-                    content:"评论内容",
-                }
-                ]  //楼中楼评论
-            },
-            {
-                userID:"蜘蛛侠",
-                userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg", //用户头像图片
-                postDate:"2018-12-1 12:30:00",
-                content:"评论内容",
-                secondComments:[
-                
-                ]  //楼中楼评论
-            },
-            {
-                userID:"蜘蛛侠",
-                userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg", //用户头像图片
-                postDate:"2018-7-12 12:30:00",
-                content:"评论内容",
-                secondComments:[
-                {
-                    userID:"小蜘蛛侠",
-                    userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg",
-                    postDate:"2018-12-12 15:35",
-                    content:"评论内容",
-                },
-                {
-                    userID:"小蜘蛛侠",
-                    userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg",
-                    postDate:"2017-12-12 15:35",
-                    content:"评论内容",
-                },
-                {
-                    userID:"小蜘蛛侠",
-                    userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg",
-                    postDate:"2018-11-12 15:35",
-                    content:"评论内容",
-                }
-                ]  //楼中楼评论
-            },
-            {
-                userID:"蜘蛛侠",
-                userPic:"https://image-1253276483.cos.ap-shanghai.myqcloud.com/image/card/salon20181013.jpg", //用户头像图片
-                postDate:"2018-12-18 14:25 ",
-                content:"评论内容",
-                secondComments:[
-                
-                ]  //楼中楼评论
-            }
-
-        ]
+      Load: function(_this) {
+        _this.$axios
+          .get(
+            "https://www.easy-mock.com/mock/5beace67e551c21d755b9693/articles"
+          )
+          .then(function(response) {
+            // console.log(response.data);
+            _this.pageInfo=response.data.data;
+            console.log(_this.pageInfo);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
       },
+      pageInfo:{},
       Month:"",
       Day:"12",
     };
@@ -153,6 +70,10 @@ export default {
     
   },
   mounted:function(){
+    console.log("加载成功");
+    this.Load(this);
+
+
     var time=new Date();
     var _this=this;
     switch(time.getMonth()){
