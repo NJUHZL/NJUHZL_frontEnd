@@ -4,16 +4,16 @@
     <div class="page-content">
       <div style="text-align: center">
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/loginBackground.jpg"/>
+          <img src="../assets/img/事实核查.png"/>
         </div>
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/loginBackground.jpg"/>
+          <img src="../assets/img/可视化新闻.png"/>
         </div>
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/loginBackground.jpg"/>
+          <img src="../assets/img/研究中心.png"/>
         </div>
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/loginBackground.jpg"/>
+          <img src="../assets/img/质量报告.png"/>
         </div>
       </div>
     </div>
@@ -92,8 +92,7 @@ export default {
   width: 20%;
   text-align: center;
   display: inline-block;
-  padding: 2px;
-  height: 135px;
+  padding: 5px;
   margin-left: 0.5%;
   margin-right: 0.5%;
 }

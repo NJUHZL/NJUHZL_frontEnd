@@ -23,7 +23,7 @@
         <a href="/news">新闻</a>
       </el-menu-item>
       <el-menu-item index="5">
-        <a href="/">课程</a>
+        <a href="/courses">课程</a>
       </el-menu-item>
       <el-menu-item index="6" style="float: right" id="login">
         <a href="/login">登录</a>

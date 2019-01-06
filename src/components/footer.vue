@@ -17,5 +17,6 @@ export default {
   float: bottom;
   color: #dcdddd;
   text-align: center;
+  max-height: 40px;
 }
 </style>
