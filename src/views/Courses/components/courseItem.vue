@@ -1,13 +1,25 @@
 <template>
     <div class="main">
-        <img class="videoPreview" :src="pictureUrl"/>
+        <div class="el-card is-always-shadow videoPreview">
+            <img style="width: 100%" :src="pictureURL" @click="passVideoUrl"/>
+        </div>
         <div class="rightPart">
             <h2>{{title}}</h2>
             <div class="divider">
                 <div class="blue-style">{{newsSource}} {{newsClass}}</div>
                 <div class="plain-style">更新时间{{postTime}}</div>
             </div>
-            <div class="text">{{contentShort}}</div>
+            <div class="text">{{content}}</div>
+            <h5><i class="el-icon-success" style="color: lightblue"></i>  {{keyWord1}}</h5>
+            <h5><i class="el-icon-success" style="color: lightblue"></i>  {{keyWord2}}</h5>
+            <h5><i class="el-icon-success" style="color: lightblue"></i>  {{keyWord3}}</h5>
+            <div class="detail" @click="passVideoUrl">查看详情 》</div>
+            <div class="right">
+                <div class="blue-style">{{collectCount}}收藏</div>
+                <div class="plain-style">{{likeCount}}点赞</div>
+                <div class="plain-style">{{commentCount}}评论</div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -18,7 +30,11 @@ export default {
   props: {
     pictureURL: {
       type: String,
-      default: require("../../../assets/img/realistic.png")
+      default: require("../../../assets/img/defaultVideoPreview.jpg")
+    },
+    videoUrl: {
+      type: String,
+      default: require("../../../assets/test.mp4")
     },
     title: {
       type: String,
@@ -35,6 +51,47 @@ export default {
     postTime: {
       type: String,
       default: "2018-12-11"
+    },
+    content: {
+      type: String,
+      default:
+        "世间种种,情有独钟，\n" +
+        "皆是刹那,心弦被拨弄，\n" +
+        "余生都为，那片刻花月相逢。\n" +
+        "我用情下笔，装作从容,\n" +
+        "对抗岁月、山海变更，\n" +
+        "你在心里,栩栩如生，\n" +
+        "也算永恒。"
+    },
+    keyWord1: {
+      type: String,
+      default: "课程核心1"
+    },
+    keyWord2: {
+      type: String,
+      default: "课程核心2"
+    },
+    keyWord3: {
+      type: String,
+      default: "课程核心3"
+    },
+    likeCount: {
+      type: Number,
+      default: 30
+    },
+    collectCount: {
+      type: Number,
+      default: 20
+    },
+    commentCount: {
+      type: Number,
+      default: 14
+    }
+  },
+  methods: {
+    passVideoUrl() {
+      console.log("here");
+      this.$parent.playVideo(this.videoUrl);
     }
   }
 };
@@ -43,24 +100,32 @@ export default {
 <style lang="scss" scoped>
 .main {
   margin-left: 40%;
-  width: 50%;
+  width: 100%;
   max-height: 320px;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .videoPreview {
-  width: 60%;
+  width: 58%;
   display: inline-block;
+  margin: 0;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .rightPart {
   vertical-align: top;
-  width: 40%;
+  width: 36%;
+  display: inline-block;
+  padding-left: 4%;
+  min-height: 320px;
 }
 
 .divider {
   display: flex;
   justify-content: flex-start;
-  margin: 0 0 25px 0;
+  margin: 0 0 15px 2px;
   .plain-style {
     margin-left: 10px;
     font-size: 12px;
@@ -76,9 +141,66 @@ export default {
 }
 
 .text {
-  margin-left: 20px;
+  margin-left: 2px;
   overflow: hidden;
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(10, 10, 10, 0.8);
+  line-height: 20px;
+}
+
+h2 {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+h5 {
+  margin: 12px 0 12px 0;
+  font-weight: bold;
+  color: dimgrey;
+}
+
+.detail {
+  width: 70px;
+  flex-shrink: 0;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgb(89, 181, 224);
+  border: 1px rgb(89, 181, 224) outset;
+  border-radius: 3px;
+  text-align: center;
+  position: absolute;
+  float: bottom;
+  bottom: 20px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.right {
+  position: absolute;
+  float: bottom;
+  bottom: 20px;
+  right: 0;
+  .blue-style {
+    overflow: hidden;
+    width: 50px;
+    border-radius: 20%;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: rgb(85, 173, 214);
+    margin-top: 10px;
+  }
+  .plain-style {
+    width: 50px;
+    border-radius: 20%;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: rgba(100, 100, 100, 0.35);
+    margin-top: 10px;
+  }
 }
 </style>

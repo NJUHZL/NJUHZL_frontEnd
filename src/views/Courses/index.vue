@@ -1,10 +1,13 @@
 <template>
     <div class="main">
         <div class="navi">
-            <left-navi></left-navi>
+            <leftNaviOfCourses></leftNaviOfCourses>
         </div>
-        <courseItem></courseItem>
-        <courseItem></courseItem>
+        <div class="courseList">
+            <courseItem></courseItem>
+            <courseItem></courseItem>
+        </div>
+
         <!--<div class="items">-->
             <!--<news-item-->
                     <!--v-for="(item, index) in oneClassOfPassageList"-->
@@ -30,7 +33,7 @@
 
 <script>
 import courseItem from "./components/courseItem";
-import LeftNavi from "@/components/LeftNavi";
+import leftNaviOfCourses from "@/components/leftNaviOfCourses";
 // import { mapState } from "vuex";
 // import {
 //     FETCH_ONE_CLASS_OF_Courses_LIST,
@@ -39,7 +42,7 @@ import LeftNavi from "@/components/LeftNavi";
 
 export default {
   name: "index",
-  components: { LeftNavi, courseItem },
+  components: { leftNaviOfCourses, courseItem },
   data() {
     return {
       currentVideo: require("../../assets/test.mp4")
@@ -51,6 +54,13 @@ export default {
       $("#video").css("display", "none");
       $("video").trigger("pause");
     });
+  },
+  methods: {
+    playVideo(url) {
+      this.currentVideo = url;
+      $("#cover").css("display", "inherit");
+      $("#video").css("display", "inherit");
+    }
   }
 };
 </script>
@@ -73,6 +83,7 @@ export default {
   top: 0;
   background-color: black;
   opacity: 0.9;
+  display: none;
 }
 
 h2 {
@@ -87,5 +98,18 @@ h2 {
   z-index: 21;
   position: fixed;
   top: 100px;
+  display: none;
+}
+
+.navi {
+  display: inline-block;
+  margin-left: 9%;
+}
+
+.courseList {
+  display: inline-block;
+  vertical-align: top;
+  width: 54%;
+  margin-left: -14%;
 }
 </style>
