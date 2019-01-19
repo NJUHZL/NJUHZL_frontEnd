@@ -38,9 +38,9 @@ import {
 export default {
   name: "Article",
   components: {
-      // LeftNav,
-      LeftNavi,
-      Lev1,
+    // LeftNav,
+    LeftNavi,
+    Lev1
   },
   data() {
     return {
@@ -51,49 +51,67 @@ export default {
           )
           .then(function(response) {
             // console.log(response.data);
-            _this.pageInfo=response.data.data;
+            _this.pageInfo = response.data.data;
             console.log(_this.pageInfo);
           })
           .catch(function(error) {
             console.log(error);
           });
       },
-      pageInfo:{},
-      Month:"",
-      Day:"12",
+      pageInfo: {},
+      Month: "",
+      Day: "12"
     };
   },
-  computed: {
-   
-  },
-  methods: {
-    
-  },
-  mounted:function(){
+  computed: {},
+  methods: {},
+  mounted: function() {
     console.log("加载成功");
     this.Load(this);
 
-
-    var time=new Date();
-    var _this=this;
-    switch(time.getMonth()){
-      case 0:this.Month="Jan";break;
-      case 1:this.Month="Feb";break;
-      case 2:this.Month="Mar";break;
-      case 3:this.Month="Apr";break;
-      case 4:this.Month="May";break;
-      case 5:this.Month="June";break;
-      case 6:this.Month="July";break;
-      case 7:this.Month="Aug";break;
-      case 8:this.Month="Sept";break;
-      case 9:this.Month="Oct";break;
-      case 10:this.Month="Nov";break;
-      case 11:this.Month="Dec";break;
+    var time = new Date();
+    var _this = this;
+    switch (time.getMonth()) {
+      case 0:
+        this.Month = "Jan";
+        break;
+      case 1:
+        this.Month = "Feb";
+        break;
+      case 2:
+        this.Month = "Mar";
+        break;
+      case 3:
+        this.Month = "Apr";
+        break;
+      case 4:
+        this.Month = "May";
+        break;
+      case 5:
+        this.Month = "June";
+        break;
+      case 6:
+        this.Month = "July";
+        break;
+      case 7:
+        this.Month = "Aug";
+        break;
+      case 8:
+        this.Month = "Sept";
+        break;
+      case 9:
+        this.Month = "Oct";
+        break;
+      case 10:
+        this.Month = "Nov";
+        break;
+      case 11:
+        this.Month = "Dec";
+        break;
     }
-    this.Day=time.getDate();
+    this.Day = time.getDate();
   }
   //日期显示
-
 };
 </script>
 

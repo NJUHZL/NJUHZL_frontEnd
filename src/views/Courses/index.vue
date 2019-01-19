@@ -5,19 +5,23 @@
         </div>
         <div class="courseList">
             <courseItem></courseItem>
-            <courseItem></courseItem>
+            <course-item
+                    v-for="(item, index) in oneClassOfCourseList"
+                    v-bind:key="index"
+                    :pictureURL="item.pictureURL"
+                    :videoUrl="item.videoUrl"
+                    :title="item.title"
+                    :courseSource="item.courseSource"
+                    :courseClass="item.courseClass"
+                    :postTime="item.postTime"
+                    :content="item.content"
+                    :keywords="item.keywords"
+                    :likeCount="item.likeCount"
+                    :collectCount="item.collectCount"
+                    :commentCount="item.commentCount"
+            ></course-item>
         </div>
 
-        <!--<div class="items">-->
-            <!--<news-item-->
-                    <!--v-for="(item, index) in oneClassOfPassageList"-->
-                    <!--v-bind:key="index"-->
-                    <!--:title="item.title"-->
-                    <!--:newsSource="item.newsSource"-->
-                    <!--:newsClass="item.newsClass"-->
-                    <!--:contentShort="item.contentShort"-->
-            <!--&gt;</news-item>-->
-        <!--</div>-->
         <div id="cover">
             <h2>点击黑色背景退出播放</h2>
         </div>
@@ -34,11 +38,11 @@
 <script>
 import courseItem from "./components/courseItem";
 import leftNaviOfCourses from "@/components/leftNaviOfCourses";
-// import { mapState } from "vuex";
-// import {
-//     FETCH_ONE_CLASS_OF_Courses_LIST,
-//     SET_CURRENT_Courses
-// } from "@/store/type/actions.js";
+import { mapState } from "vuex";
+import {
+  FETCH_ONE_CLASS_OF_COURSE_LIST,
+  SET_CURRENT_CLASS_OF_COURSE
+} from "@/store/type/actions.js";
 
 export default {
   name: "index",
@@ -48,19 +52,34 @@ export default {
       currentVideo: require("../../assets/test.mp4")
     };
   },
-  mounted: function() {
-    $("#cover").click(function() {
-      $("#cover").css("display", "none");
-      $("#video").css("display", "none");
-      $("video").trigger("pause");
-    });
+  computed: {
+    ...mapState({
+      currentClass: state => state.course.currentClass,
+      oneClassOfCourseList: state => state.course.oneClassOfCourseList
+    })
   },
   methods: {
+    fetchOneClassOfCourseList(key) {
+      this.$store.dispatch(FETCH_ONE_CLASS_OF_COURSE_LIST, key);
+      this.$store.dispatch(SET_CURRENT_CLASS_OF_COURSE, key);
+    },
     playVideo(url) {
       this.currentVideo = url;
       $("#cover").css("display", "inherit");
       $("#video").css("display", "inherit");
     }
+  },
+  async mounted() {
+    $("#cover").click(function() {
+      $("#cover").css("display", "none");
+      $("#video").css("display", "none");
+      $("video").trigger("pause");
+    });
+    await this.$store.dispatch(
+      FETCH_ONE_CLASS_OF_COURSE_LIST,
+      this.currentClass
+    );
+    await this.$store.dispatch(SET_CURRENT_CLASS_OF_COURSE, this.currentClass);
   }
 };
 </script>

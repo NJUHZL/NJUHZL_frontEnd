@@ -31,12 +31,30 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import {
+  FETCH_ONE_CLASS_OF_COURSE_LIST,
+  SET_CURRENT_CLASS_OF_COURSE
+} from "@/store/type/actions.js";
 export default {
   name: "leftNaviOfCourses",
   data() {
     return {
       logoURL: require("../assets/img/realistic.png")
     };
+  },
+  computed: {
+    ...mapState({
+      currentClass: state => state.course.currentClass,
+      oneClassOfPassageList: state => state.course.oneClassOfCourseList
+    })
+  },
+  methods: {
+    fetchOneClassOfCourseList(key) {
+      this.$store.dispatch(FETCH_ONE_CLASS_OF_COURSE_LIST, key);
+      this.$store.dispatch(SET_CURRENT_CLASS_OF_COURSE, key);
+      this.$router.push("/courses");
+    }
   }
 };
 </script>

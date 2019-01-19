@@ -6,13 +6,11 @@
         <div class="rightPart">
             <h2>{{title}}</h2>
             <div class="divider">
-                <div class="blue-style">{{newsSource}} {{newsClass}}</div>
+                <div class="blue-style">{{courseSource}} {{courseClass}}</div>
                 <div class="plain-style">更新时间{{postTime}}</div>
             </div>
             <div class="text">{{content}}</div>
-            <h5><i class="el-icon-success" style="color: lightblue"></i>  {{keyWord1}}</h5>
-            <h5><i class="el-icon-success" style="color: lightblue"></i>  {{keyWord2}}</h5>
-            <h5><i class="el-icon-success" style="color: lightblue"></i>  {{keyWord3}}</h5>
+            <h5  v-for="word in keywords" :key="word"><i class="el-icon-success" style="color: lightblue"></i>  {{word}}</h5>
             <div class="detail" @click="passVideoUrl">查看详情 》</div>
             <div class="right">
                 <div class="blue-style">{{collectCount}}收藏</div>
@@ -40,11 +38,11 @@ export default {
       type: String,
       default: "课程标题"
     },
-    newsSource: {
+    courseSource: {
       type: String,
       default: "南京大学网站"
     },
-    newsClass: {
+    courseClass: {
       type: String,
       default: "种类1"
     },
@@ -63,17 +61,11 @@ export default {
         "你在心里,栩栩如生，\n" +
         "也算永恒。"
     },
-    keyWord1: {
-      type: String,
-      default: "课程核心1"
-    },
-    keyWord2: {
-      type: String,
-      default: "课程核心2"
-    },
-    keyWord3: {
-      type: String,
-      default: "课程核心3"
+    keywords: {
+      type: Array,
+      default: function() {
+        return ["软件学院", "迎新", "大学生活"];
+      }
     },
     likeCount: {
       type: Number,
