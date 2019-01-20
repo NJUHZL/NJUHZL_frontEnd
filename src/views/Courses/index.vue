@@ -4,7 +4,6 @@
             <leftNaviOfCourses></leftNaviOfCourses>
         </div>
         <div class="courseList">
-            <courseItem></courseItem>
             <course-item
                     v-for="(item, index) in oneClassOfCourseList"
                     v-bind:key="index"
