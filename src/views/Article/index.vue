@@ -20,7 +20,7 @@
       <div class="comment">
         <div class="head">全部评论</div>
         <div class="commentList">
-          <Lev1 v-for="item in pageInfo.comments" v-bind:comment="item"></Lev1>
+          <Lev1 v-for="item in pageInfo.comments" v-bind:comment="item" v-bind:key="item.postDate"></Lev1>
         </div>
       </div>
     </div>
@@ -30,10 +30,6 @@
 <script>
 import LeftNavi from "../../components/LeftNavi";
 import Lev1 from "../../components/Comment/Lev1";
-import {
-  FETCH_ONE_CLASS_OF_PASSAGE_LIST,
-  SET_CURRENT_CLASS
-} from "@/store/type/actions.js";
 
 export default {
   name: "Article",
@@ -70,7 +66,7 @@ export default {
     this.Load(this);
 
     var time = new Date();
-    var _this = this;
+    // var _this = this;
     switch (time.getMonth()) {
       case 0:
         this.Month = "Jan";

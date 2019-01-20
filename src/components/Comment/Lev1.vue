@@ -9,7 +9,7 @@
     	<div class="ID">{{comment.userID}} 留言</div>
     	<div class="content">{{comment.content}}</div>
     </div>
-    <Lev2 v-for="item in comment.secondComments" v-bind:comment="item"></Lev2>
+    <Lev2 v-for="item in comment.secondComments" v-bind:comment="item" v-bind:key="item.postDate"></Lev2>
   </div>
 </template>
 
