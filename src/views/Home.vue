@@ -55,6 +55,7 @@ import abstract from "@/components/abstract.vue";
 import recommendComment from "@/components/recommendComment.vue";
 import { mapState } from "vuex";
 import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
+import { FETCH_LATEST_COMMENTS } from "@/store/type/actions";
 
 export default {
   name: "Home",
@@ -62,13 +63,15 @@ export default {
   methods: {},
   computed: {
     ...mapState({
-      hotPassage: state => state.passage.hotPassage
+      hotPassage: state => state.home.hotPassage,
+      latestComments: state => state.home.latestComments
     })
   },
 
   async mounted() {
     //挂载后拉取数据
     await this.$store.dispatch(FETCH_HOT_PASSAGE);
+    await this.$store.dispatch(FETCH_LATEST_COMMENTS);
     $("#nav").css("backgroundColor", "transparent");
   }
 };

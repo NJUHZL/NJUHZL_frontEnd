@@ -1,7 +1,7 @@
 import * as ACTIONS from "@/store/type/actions";
 import * as MUTATIONS from "@/store/type/mutations";
-import { fetchHotNews } from "@/api/rightNaviService";
-import { fetchLatestComments } from "@/api/rightNaviService";
+import { fetchHotNews } from "@/api/homeService";
+import { fetchLatestComments } from "@/api/homeService";
 
 //State
 const state = {

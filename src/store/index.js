@@ -3,7 +3,7 @@ import Vuex from "vuex";
 
 import user from "./modules/user.module";
 import passage from "./modules/passage.module";
-import rightNavi from "./modules/passage.module";
+import home from "./modules/home.module";
 import course from "./modules/course.module";
 import rightNaviOfCourses from "./modules/course.module";
 
@@ -13,7 +13,7 @@ export default new Vuex.Store({
   modules: {
     user,
     passage,
-    rightNavi,
+    home,
     course,
     rightNaviOfCourses
   }

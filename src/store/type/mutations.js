@@ -10,5 +10,5 @@ export const SET_CURRENT_CLASS = "setCurrentClass"; //设置当前文章类型
 export const SET_HOT_NEWS = "setHotNews";
 export const SET_LATEST_COMMENTS = "setLatestComments";
 
-export const SET_ONE_CLASS_OF_COURSE_LIST = "fetchOneClassOfCourseList";
+export const SET_ONE_CLASS_OF_COURSE_LIST = "setOneClassOfCourseList";
 export const SET_CURRENT_CLASS_OF_COURSE = "setCurrentClassOfCourse"; //设置当前课程类型
