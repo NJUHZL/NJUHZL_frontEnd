@@ -4,7 +4,7 @@ import { fetchOneClassOfCourseList } from "@/api/courseService";
 
 const state = {
   oneClassOfCourseList: [],
-  currentClass: "course1"
+  currentClass: "种类1"
 };
 
 //Action

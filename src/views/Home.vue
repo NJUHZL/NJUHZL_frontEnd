@@ -19,13 +19,21 @@
     </div>
     <carousel style="margin-top: 90px"></carousel>
     <div style="margin-left: 10%;margin-top: 80px">
-      <abstract></abstract>
-      <abstract></abstract>
-      <abstract></abstract>
+      <abstract v-for="(item, id) in latestPassage"
+                 v-bind:key="id"
+                 :title="item.title"
+                 :abstract="item.abstract"
+                 :postTime="item.postTime"
+      ></abstract>
+      <!--<abstract></abstract>-->
+      <!--<abstract></abstract>-->
       <img style="width: 2%;display: inline-block;vertical-align: top;padding-top: 10px" src="../assets/img/commentIcon.png">
       <div style="width: 18%;display: inline-block;vertical-align: top">
-        <recommendComment></recommendComment>
-        <recommendComment></recommendComment>
+        <recommendComment v-for="(item, id) in latestComments"
+                          v-bind:key="id"
+                          :comment="item.comment"
+                          :postTime="item.postTime"
+        ></recommendComment>
       </div>
     </div>
     <div style="text-align: center;margin-top: 50px">
@@ -54,7 +62,7 @@ import carousel from "@/components/carousel.vue";
 import abstract from "@/components/abstract.vue";
 import recommendComment from "@/components/recommendComment.vue";
 import { mapState } from "vuex";
-import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
+import { FETCH_LATEST_PASSAGE } from "@/store/type/actions";
 import { FETCH_LATEST_COMMENTS } from "@/store/type/actions";
 
 export default {
@@ -63,14 +71,14 @@ export default {
   methods: {},
   computed: {
     ...mapState({
-      hotPassage: state => state.home.hotPassage,
+      latestPassage: state => state.home.latestPassage,
       latestComments: state => state.home.latestComments
     })
   },
 
   async mounted() {
     //挂载后拉取数据
-    await this.$store.dispatch(FETCH_HOT_PASSAGE);
+    await this.$store.dispatch(FETCH_LATEST_PASSAGE);
     await this.$store.dispatch(FETCH_LATEST_COMMENTS);
     $("#nav").css("backgroundColor", "transparent");
   }

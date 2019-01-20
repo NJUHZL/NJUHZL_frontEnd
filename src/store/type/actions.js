@@ -3,6 +3,7 @@ export const REGISTER = "register";
 export const LOGIN = "login";
 
 export const FETCH_HOT_PASSAGE = "fetchHotPassage";
+export const FETCH_LATEST_PASSAGE = "fetchLatestPassage";
 export const FETCH_ONE_CLASS_OF_PASSAGE_LIST = "fetchOneClassOfPassageList";
 export const SET_CURRENT_CLASS = "setCurrentClass"; //设置当前文章类型
 

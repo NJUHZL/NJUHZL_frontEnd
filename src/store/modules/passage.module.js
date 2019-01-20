@@ -17,7 +17,7 @@ const actions = {
   //获得热点走马灯文章
   async [ACTIONS.FETCH_HOT_PASSAGE](context) {
     const result = await fetchHotPassage();
-    context.commit(MUTATIONS.SET_HOT_PASSAGE, result.data);
+    context.commit(MUTATIONS.SET_LATEST_PASSAGE, result.data);
   },
 
   //获得某一类型的文档列表

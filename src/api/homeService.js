@@ -5,8 +5,8 @@ import { COMMENT_MODULE } from "./_prefix";
 /**
  *  获得走马热点文章
  */
-export const fetchHotNews = () => {
-  return request(`${PASSAGE_MODULE}/hot`);
+export const fetchLatestPassage = () => {
+  return request(`${PASSAGE_MODULE}/latest`);
 };
 
 export const fetchLatestComments = () => {
