@@ -119,6 +119,8 @@ export default {
   /*left: 50%;*/
   /*margin-left: 120px;*/
   margin-top: 30px;
+  width: 84%;
+  left:8%;
 }
 .navi{
   /*margin-left: 100px;*/
@@ -142,11 +144,14 @@ export default {
   float:left;
 }
 .title{
-  font-size: 50px;
+  /*font-size: 50px;*/
+  font-size: 30px;
+
 }
 .info{
   margin-top: 10px;
-  font-size: 16px;
+  /*font-size: 16px;*/
+  font-size: 14px;
   color: #036e8b;
 }
 .calendar{
@@ -181,7 +186,8 @@ export default {
   width: 100%;
   height: auto;
   margin-top: 40px;
-  font-size: 22px;
+  /*font-size: 22px;*/
+  font-size: 17px;
   line-height: 32px;
   text-indent: 2em;
   margin-bottom: 60px;
