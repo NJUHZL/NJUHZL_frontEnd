@@ -1,26 +1,26 @@
 <template>
     <div class="navi">
         <img class="logo" :src="logoURL">
-        <el-menu default-active="1">
-            <el-menu-item index="sshc">
+        <el-menu default-active="1"  @select="fetchOneClassOfCourseList">
+            <el-menu-item index="种类1">
                 <div class="menu-item">
                     <div>视频分类1</div>
                     <div class="number">1</div>
                 </div>
             </el-menu-item>
-            <el-menu-item index="kshxw">
+            <el-menu-item index="种类2">
                 <div class="menu-item">
                     <div>视频分类2</div>
                     <div class="number">1</div>
                 </div>
             </el-menu-item>
-            <el-menu-item index="yjzx">
+            <el-menu-item index="种类3">
                 <div class="menu-item">
                     <div>视频分类3</div>
                     <div class="number">1</div>
                 </div>
             </el-menu-item>
-            <el-menu-item index="zlbg">
+            <el-menu-item index="种类4">
                 <div class="menu-item">
                     <div>视频分类4</div>
                     <div class="number">1</div>

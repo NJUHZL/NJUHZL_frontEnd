@@ -8,7 +8,7 @@
             <!--</el-carousel-item>-->
         <!--</el-carousel>-->
         <el-carousel height="500px">
-            <el-carousel-item v-for="item in hotPassage" :key="item.id">
+            <el-carousel-item v-for="item in hotPassage" :key="item.id" @click="openArticle(item.id)">
                 <img :src="item.coverPicture" style="width: 100%;height: 100%;z-index: -1"/>
                 <h1 style="height: 30px">{{item.title}}</h1>
                 <div class="back"></div>
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-    import { mapState } from "vuex";
-    import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
+import { mapState } from "vuex";
+import { FETCH_HOT_PASSAGE } from "@/store/type/actions";
 
 export default {
   name: "carousel",
@@ -39,16 +39,16 @@ export default {
       ]
     };
   },
-    computed: {
-        ...mapState({
-            hotPassage: state => state.home.hotPassage,
-        })
-    },
+  computed: {
+    ...mapState({
+      hotPassage: state => state.home.hotPassage
+    })
+  },
 
-    async mounted() {
-        //挂载后拉取数据
-        await this.$store.dispatch(FETCH_HOT_PASSAGE);
-    }
+  async mounted() {
+    //挂载后拉取数据
+    await this.$store.dispatch(FETCH_HOT_PASSAGE);
+  }
 };
 </script>
 

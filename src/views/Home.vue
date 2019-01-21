@@ -24,6 +24,7 @@
                  :title="item.title"
                  :abstract="item.abstract"
                  :postTime="item.postTime"
+                @click="openArticle(item.id)"
       ></abstract>
       <!--<abstract></abstract>-->
       <!--<abstract></abstract>-->
@@ -33,6 +34,7 @@
                           v-bind:key="id"
                           :comment="item.comment"
                           :postTime="item.postTime"
+                          @click="openArticle(item.passageID)"
         ></recommendComment>
       </div>
     </div>
@@ -68,7 +70,12 @@ import { FETCH_LATEST_COMMENTS } from "@/store/type/actions";
 export default {
   name: "Home",
   components: { banner, carousel, abstract, recommendComment },
-  methods: {},
+  methods: {
+      openArticle(passageID){
+          localStorage.njuhzl_passageID=passageID;
+          this.$router.push({ name: "article" });
+      }
+  },
   computed: {
     ...mapState({
       latestPassage: state => state.home.latestPassage,
