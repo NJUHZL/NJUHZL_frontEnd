@@ -4,7 +4,7 @@
             <leftNaviOfCourses></leftNaviOfCourses>
         </div>
         <div class="courseList">
-            <course-item
+            <courseItem
                     v-for="(item, index) in oneClassOfCourseList"
                     v-bind:key="index"
                     :pictureURL="item.pictureURL"
@@ -18,7 +18,7 @@
                     :likeCount="item.likeCount"
                     :collectCount="item.collectCount"
                     :commentCount="item.commentCount"
-            ></course-item>
+            ></courseItem>
         </div>
 
         <div id="cover">
