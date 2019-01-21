@@ -39,6 +39,12 @@ export default {
       ]
     };
   },
+  methods: {
+    openArticle(passageID) {
+      localStorage.njuhzl_passageID = passageID;
+      this.$router.push({ name: "article" });
+    }
+  },
   computed: {
     ...mapState({
       hotPassage: state => state.home.hotPassage

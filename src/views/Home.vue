@@ -71,10 +71,10 @@ export default {
   name: "Home",
   components: { banner, carousel, abstract, recommendComment },
   methods: {
-      openArticle(passageID){
-          localStorage.njuhzl_passageID=passageID;
-          this.$router.push({ name: "article" });
-      }
+    openArticle(passageID) {
+      localStorage.njuhzl_passageID = passageID;
+      this.$router.push({ name: "article" });
+    }
   },
   computed: {
     ...mapState({
