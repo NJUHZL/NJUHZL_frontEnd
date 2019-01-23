@@ -5,7 +5,7 @@ import { USER_MODULE } from "./_prefix";
  * 注册前验证
  * @param {*} email
  */
-export const registerIdentify = userEmail => {
+export const registerIdentify = ({userEmail}) => {
   return request(`${USER_MODULE}/identify`, {
     method: "POST",
     body: {

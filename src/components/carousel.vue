@@ -9,7 +9,7 @@
         <!--</el-carousel>-->
         <el-carousel height="500px">
             <el-carousel-item v-for="item in hotPassage" :key="item.id" @click="openArticle(item.id)">
-                <img :src="item.coverPicture" style="width: 100%;height: 100%;z-index: -1"/>
+                <img :src="item.coverPicture" style="width: 100%;z-index: -1"/>
                 <h1 style="height: 30px">{{item.title}}</h1>
                 <div class="back"></div>
             </el-carousel-item>
