@@ -5,11 +5,12 @@ import { USER_MODULE } from "./_prefix";
  * 注册前验证
  * @param {*} email
  */
-export const registerIdentify = ({userEmail}) => {
+export const registerIdentify = ({ user_email }) => {
+  console.log(user_email);
   return request(`${USER_MODULE}/identify`, {
     method: "POST",
     body: {
-      email: userEmail
+      email: user_email
     }
   });
 };
