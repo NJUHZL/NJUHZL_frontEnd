@@ -10,6 +10,7 @@
   "dependencies": {
     "element-ui": "^2.4.9",
     "vue": "^2.5.17",
+    "vue-cli": "^2.9.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -18,11 +19,12 @@
     "@vue/cli-plugin-eslint": "^3.1.1",
     "@vue/cli-service": "^3.1.1",
     "@vue/eslint-config-prettier": "^4.0.0",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "node-sass": "^4.9.0",
-    "nodemon": "^1.18.5",
+    "nodemon": "^1.18.7",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.17"
   }

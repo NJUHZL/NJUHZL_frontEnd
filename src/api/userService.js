@@ -5,11 +5,12 @@ import { USER_MODULE } from "./_prefix";
  * 注册前验证
  * @param {*} email
  */
-export const registerIdentify = userEmail => {
+export const registerIdentify = ({ user_email }) => {
+  console.log(user_email);
   return request(`${USER_MODULE}/identify`, {
     method: "POST",
     body: {
-      email: userEmail
+      email: user_email
     }
   });
 };
@@ -26,6 +27,16 @@ export const register = ({ email, nickname, password, indentifyCode }) => {
       nickname: nickname,
       password: password,
       indentifyCode: indentifyCode
+    }
+  });
+};
+
+export const login = ({ email, password }) => {
+  return request(`${USER_MODULE}/login`, {
+    method: "POST",
+    body: {
+      email: email,
+      password: password
     }
   });
 };
