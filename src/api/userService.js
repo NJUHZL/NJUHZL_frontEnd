@@ -19,14 +19,21 @@ export const registerIdentify = ({ user_email }) => {
  * 用户注册
  * @param {} param0
  */
-export const register = ({ email, nickname, password, indentifyCode }) => {
+export const register = ({
+  email,
+  nickname,
+  password,
+  identifyCode,
+  token
+}) => {
   return request(`${USER_MODULE}/register`, {
     method: "POST",
+    headers: { authorization: "Bearer " + token },
     body: {
       email: email,
       nickname: nickname,
       password: password,
-      indentifyCode: indentifyCode
+      identifyCode: identifyCode
     }
   });
 };

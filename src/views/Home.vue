@@ -22,8 +22,8 @@
       <abstract v-for="(item, id) in latestPassage"
                  v-bind:key="id"
                  :title="item.title"
-                 :abstract="item.abstract"
-                 :postTime="item.postTime"
+                 :abstract="item.script"
+                 :postTime="item.date"
                 @click="openArticle(item.id)"
       ></abstract>
       <!--<abstract></abstract>-->

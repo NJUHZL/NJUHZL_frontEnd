@@ -11,10 +11,10 @@ const state = {
 
 //Action
 const actions = {
-  //获得热点走马灯文章
+  //获得最新文章
   async [ACTIONS.FETCH_LATEST_PASSAGE](context) {
     const result = await fetchLatestPassage();
-    context.commit(MUTATIONS.SET_LATEST_PASSAGE, result.data);
+    context.commit(MUTATIONS.SET_LATEST_PASSAGE, result);
   },
   async [ACTIONS.FETCH_LATEST_COMMENTS](context) {
     const result = await fetchLatestComments();
@@ -27,6 +27,7 @@ const mutations = {
   //设置热点走马灯文章
   [MUTATIONS.SET_LATEST_PASSAGE](state, result) {
     state.latestPassage = result;
+    console.log(state.latestPassage);
   },
   [MUTATIONS.SET_LATEST_COMMENTS](state, result) {
     state.latestComments = result;

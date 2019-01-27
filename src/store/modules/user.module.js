@@ -9,7 +9,8 @@ const state = {
   identifyCodeHasSend: false,
   registerResult: 0,
   isAuthenticated: !!getToken(),
-  isLoginError: false
+  isLoginError: false,
+  token: ""
 };
 
 //Action
@@ -17,6 +18,7 @@ const actions = {
   async [ACTIONS.REGISTER_IDENTIFY](context, userEmail) {
     const identifyResult = await registerIdentify(userEmail);
     context.commit(MUTATIONS.REGISTER_IDENTIFY, identifyResult.success);
+    context.commit(MUTATIONS.SET_TOKEN, identifyResult.token);
   },
   async [ACTIONS.LOGIN](context, info) {
     const { code, token } = await login(info);
@@ -42,11 +44,17 @@ const mutations = {
   [MUTATIONS.REGISTER_IDENTIFY](state, result) {
     state.identifyCodeHasSend = result;
   },
+  [MUTATIONS.SET_TOKEN](state, token) {
+    state.token = token;
+  },
   [MUTATIONS.SET_AUTH](state, isAuthenticated) {
     state.isAuthenticated = isAuthenticated;
   },
   [MUTATIONS.SET_LOGIN_ERROR](state, isError) {
     state.isLoginError = isError;
+  },
+  [MUTATIONS.REGISTER](state, result) {
+    state.registerResult = result;
   }
 };
 

@@ -40,7 +40,8 @@ export default {
   computed: {
     ...mapState({
       registerResult: state => state.user.registerResult,
-      identifyCodeHasSend: state => state.user.identifyCodeHasSend
+      identifyCodeHasSend: state => state.user.identifyCodeHasSend,
+      token: state => state.user.token
     })
   },
   mounted: function() {
@@ -90,27 +91,22 @@ export default {
         email: this.email,
         nickname: this.nickname,
         password: this.password,
-        indentifyCode: this.indentifyCode
+        identifyCode: this.identifyCode,
+        token: this.token
       });
-      if (this.registerResult === 1) {
-        //fail to login
-        this.$message({
-          message: "验证码错误",
-          type: "error"
-        });
-      } else if (this.registerResult === 2) {
-        //fail to login
-        this.$message({
-          message: "邮箱已注册",
-          type: "error"
-        });
-      } else {
-        //success
+      console.log(this.registerResult);
+      if (this.registerResult.code === 1) {
         this.$message({
           message: "注册成功",
           type: "success"
         });
         this.$router.push({ name: "login" });
+      } else {
+        //fail to login
+        this.$message({
+          message: this.registerResult.msg,
+          type: "error"
+        });
       }
     },
 

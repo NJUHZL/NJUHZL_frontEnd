@@ -13,6 +13,7 @@ const actions = {
   async [ACTIONS.FETCH_ONE_CLASS_OF_COURSE_LIST](context, className) {
     const result = await fetchOneClassOfCourseList(className);
     console.log("CLASS_NAME:", className);
+    console.log(result);
     context.commit(MUTATIONS.SET_ONE_CLASS_OF_COURSE_LIST, result);
   },
 

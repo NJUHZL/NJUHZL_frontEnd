@@ -47,7 +47,6 @@ export default {
         password: this.passwordText
       });
       if (this.errors) {
-        console.log("here");
         //fail to login
         this.$message({
           message: "用户名或密码错误",
