@@ -10,7 +10,7 @@ import {
 const state = {
   hotPassage: [],
   oneClassOfPassageList: [],
-  currentClass: "sshc",
+  currentClass: "事实核查",
   publishResult: false
 };
 

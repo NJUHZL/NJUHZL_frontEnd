@@ -32,7 +32,9 @@ import {
   Select,
   Table,
   TableColumn,
-  Loading
+  Loading,
+  Option,
+  OptionGroup
 } from "element-ui";
 
 Vue.use(Button);
@@ -66,6 +68,8 @@ Vue.use(Select);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Loading.directive);
+Vue.use(Option);
+Vue.use(OptionGroup);
 
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;

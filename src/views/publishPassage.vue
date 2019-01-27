@@ -2,7 +2,14 @@
   <div style="width: 100%;">
     <div style="width: 40%;text-align: center;margin-left: 30%">
       <h1 style="color: lightskyblue">文章发布</h1>
-      <el-input v-model="title" placeholder="请输入标题" maxlength="20" style="margin-bottom: 10px"></el-input>
+      <el-input v-model="title" placeholder="请输入标题" maxlength="20" style="margin-bottom: 20px"></el-input>
+      <el-select v-model="type" placeholder="请选择文章分类" style="margin-bottom: 10px">
+        <el-option
+                v-for="item in options"
+                :key="item"
+                :value="item">
+        </el-option>
+      </el-select><br>
       <el-input v-model="keyword1" placeholder="请输入关键词1" maxlength="5" style="width: 30%;margin: 1%"></el-input>
       <el-input v-model="keyword2" placeholder="请输入关键词2" maxlength="5" style="width: 30%;margin: 1%"></el-input>
       <el-input v-model="keyword3" placeholder="请输入关键词3" maxlength="5" style="width: 30%;margin: 1%"></el-input>
@@ -41,7 +48,9 @@ export default {
       content: "",
       keyword1: "",
       keyword2: "",
-      keyword3: ""
+      keyword3: "",
+      type: "",
+      options: ["事实核查", "可视化新闻", "研究中心", "质量报告"]
     };
   },
   methods: {
