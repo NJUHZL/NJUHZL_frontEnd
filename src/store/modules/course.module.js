@@ -14,7 +14,7 @@ const actions = {
     const result = await fetchOneClassOfCourseList(className);
     console.log("CLASS_NAME:", className);
     console.log(result);
-    context.commit(MUTATIONS.SET_ONE_CLASS_OF_COURSE_LIST, result);
+    context.commit(MUTATIONS.SET_ONE_CLASS_OF_COURSE_LIST, result.course);
   },
 
   async [ACTIONS.SET_CURRENT_CLASS_OF_COURSE](context, className) {
