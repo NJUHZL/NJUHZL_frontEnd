@@ -59,6 +59,12 @@ export default new Router({
       name: "signup",
       meta: { requireAuth: false },
       component: () => import("@/views/signup.vue")
+    },
+    {
+      path: "/secret/hidden/backdoor/publishPassage",
+      name: "publishPassage",
+      meta: { requireAuth: false },
+      component: () => import("@/views/publishPassage.vue")
     }
   ]
 });

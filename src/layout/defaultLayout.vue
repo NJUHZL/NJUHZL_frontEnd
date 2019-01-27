@@ -15,7 +15,7 @@
 
 <script>
 import navi from "@/components/navi.vue";
-import foot from "@/components/footer.vue";
+import foot from "@/components/foot.vue";
 import rightBar from "@/components/rightBar.vue";
 export default {
   name: "DefaultLayout",

@@ -13,3 +13,5 @@ export const SET_LATEST_COMMENTS = "setLatestComments";
 
 export const SET_ONE_CLASS_OF_COURSE_LIST = "setOneClassOfCourseList";
 export const SET_CURRENT_CLASS_OF_COURSE = "setCurrentClassOfCourse"; //设置当前课程类型
+
+export const PUBLISH_PASSAGE = "publishPassage";

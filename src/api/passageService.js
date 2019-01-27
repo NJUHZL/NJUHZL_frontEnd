@@ -20,3 +20,10 @@ export const fetchOneClassOfPassageList = className => {
     }
   });
 };
+
+export const publishPassage = info => {
+  return request(`${PASSAGE_MODULE}/publish`, {
+    method: "POST",
+    body: info
+  });
+};

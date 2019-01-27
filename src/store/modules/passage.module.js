@@ -2,14 +2,16 @@ import * as ACTIONS from "@/store/type/actions";
 import * as MUTATIONS from "@/store/type/mutations";
 import {
   fetchHotPassage,
-  fetchOneClassOfPassageList
+  fetchOneClassOfPassageList,
+  publishPassage
 } from "@/api/passageService";
 
 //State
 const state = {
   hotPassage: [],
   oneClassOfPassageList: [],
-  currentClass: "sshc"
+  currentClass: "sshc",
+  publishResult: false
 };
 
 //Action
@@ -29,6 +31,11 @@ const actions = {
 
   async [ACTIONS.SET_CURRENT_CLASS](context, className) {
     context.commit(MUTATIONS.SET_CURRENT_CLASS, className);
+  },
+
+  async [ACTIONS.PUBLISH_PASSAGE](context, info) {
+    const result = await publishPassage(info);
+    context.commit(MUTATIONS.PUBLISH_PASSAGE, result);
   }
 };
 
@@ -45,6 +52,9 @@ const mutations = {
   //设置某一类型的文章
   [MUTATIONS.SET_CURRENT_CLASS](state, className) {
     state.currentClass = className;
+  },
+  [MUTATIONS.PUBLISH_PASSAGE](state, result) {
+    state.publishResult = result;
   }
 };
 
