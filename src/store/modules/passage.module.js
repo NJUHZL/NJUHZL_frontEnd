@@ -24,8 +24,8 @@ const actions = {
 
   //获得某一类型的文档列表
   async [ACTIONS.FETCH_ONE_CLASS_OF_PASSAGE_LIST](context, className) {
-    const result = await fetchOneClassOfPassageList(className);
     console.log("CLASS_NAME:", className);
+    const result = await fetchOneClassOfPassageList(className);
     console.log(result);
     context.commit(MUTATIONS.SET_ONE_CLASS_OF_PASSAGE_LIST, result);
   },

@@ -14,9 +14,10 @@ export default {
 .foot {
   width: 100%;
   background-color: #1a1818;
-  float: bottom;
+  bottom: 0;
   color: #dcdddd;
   text-align: center;
   max-height: 40px;
+  position: absolute;
 }
 </style>
