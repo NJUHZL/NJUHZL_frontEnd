@@ -9,7 +9,7 @@ module.exports = {
       }
     },
     historyApiFallback: {
-      index: "/index.html" //index.html为当前目录创建的template.html
+      index: "./index.html" //index.html为当前目录创建的template.html
     }
   }
 };
