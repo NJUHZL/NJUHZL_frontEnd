@@ -25,10 +25,10 @@
       <el-menu-item index="5">
         <a href="/courses">课程</a>
       </el-menu-item>
-      <el-menu-item index="6" style="float: right" id="login">
-        <a href="/login">登录</a>
+      <el-menu-item index="6" style="float: right">
+        <a href="/login" id="login">登录</a>
         /
-        <a href="/signup">注册</a>
+        <a href="/signup" id="signup">注册</a>
       </el-menu-item>
     </el-menu>
   </div>
@@ -36,11 +36,25 @@
 
 <script>
 export default {
+  inject: ["reload"],
   name: "navi",
   data() {
     return {
       activeIndex: "1"
     };
+  },
+  mounted() {
+    if (localStorage.njuhzl_state === "online") {
+      let that = this;
+      $("#login").text("切换账号");
+      $("#signup").attr("href", "#");
+      $("#signup").text("退出登录");
+      $("#signup").on("click", function() {
+        console.log("here");
+        localStorage.removeItem("njuhzl_state");
+        that.reload();
+      });
+    }
   },
   methods: {
     handleSelect(key, keyPath) {

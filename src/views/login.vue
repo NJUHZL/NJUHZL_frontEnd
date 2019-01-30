@@ -55,6 +55,7 @@ export default {
         this.passwordText = "";
       } else {
         //success
+        localStorage.njuhzl_state = "online";
         this.$router.push({ name: "home" });
       }
     }
