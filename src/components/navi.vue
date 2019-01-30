@@ -4,7 +4,6 @@
       :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
-      @select="handleSelect"
       background-color="transparent"
       text-color="#fff"
       active-text-color="lightskyblue"
@@ -50,15 +49,9 @@ export default {
       $("#signup").attr("href", "#");
       $("#signup").text("退出登录");
       $("#signup").on("click", function() {
-        console.log("here");
         localStorage.removeItem("njuhzl_state");
         that.reload();
       });
-    }
-  },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
     }
   }
 };
