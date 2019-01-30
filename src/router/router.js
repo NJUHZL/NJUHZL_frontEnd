@@ -5,7 +5,7 @@ Vue.use(Router);
 
 export default new Router({
   mode: "history",
-  base: "/NJUHZL_frontEnd",
+  //base: "/NJUHZL_frontEnd",
   routes: [
     {
       path: "/user",

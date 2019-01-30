@@ -19,7 +19,7 @@
         <a href="/">首页</a>
       </el-menu-item>
       <el-menu-item id="guide" index="4">
-        <a href="/NJUHZL_frontEnd/news">新闻</a>
+        <a href="/news">新闻</a>
       </el-menu-item>
       <el-menu-item index="5">
         <a href="/courses">课程</a>

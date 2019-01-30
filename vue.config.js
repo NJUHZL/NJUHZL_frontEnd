@@ -1,6 +1,7 @@
 module.exports = {
   baseUrl: "./",
   devServer: {
+    port: 80,
     proxy: {
       "/api": {
         target: "http://47.101.144.241:3000/",
