@@ -85,9 +85,9 @@ export default {
 
   async mounted() {
     //挂载后拉取数据
+    $("#nav").css("backgroundColor", "transparent");
     await this.$store.dispatch(FETCH_LATEST_PASSAGE);
     await this.$store.dispatch(FETCH_LATEST_COMMENTS);
-    $("#nav").css("backgroundColor", "transparent");
   }
 };
 </script>
