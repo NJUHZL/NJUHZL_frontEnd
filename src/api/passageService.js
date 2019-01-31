@@ -27,3 +27,17 @@ export const publishPassage = info => {
     body: info
   });
 };
+
+export const fetchAllPassage = () => {
+  return request(`${PASSAGE_MODULE}/all`);
+};
+
+export const deletePassage = ({ id }) => {
+  console.log(id);
+  return request(`${PASSAGE_MODULE}/delete`, {
+    method: "POST",
+    body: {
+      id: id
+    }
+  });
+};

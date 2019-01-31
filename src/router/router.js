@@ -66,6 +66,12 @@ export default new VueRouter({
       name: "publishPassage",
       meta: { requireAuth: false },
       component: () => import("@/views/publishPassage.vue")
+    },
+    {
+      path: "/secret/hidden/backdoor/passageAdmin",
+      name: "passageAdmin",
+      meta: { requireAuth: false },
+      component: () => import("@/views/passageAdmin.vue")
     }
   ]
 });

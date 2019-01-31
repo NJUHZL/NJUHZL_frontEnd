@@ -3,7 +3,9 @@ import * as MUTATIONS from "@/store/type/mutations";
 import {
   fetchHotPassage,
   fetchOneClassOfPassageList,
-  publishPassage
+  publishPassage,
+  fetchAllPassage,
+  deletePassage
 } from "@/api/passageService";
 
 //State
@@ -11,7 +13,9 @@ const state = {
   hotPassage: [],
   oneClassOfPassageList: [],
   currentClass: "事实核查",
-  publishResult: false
+  publishResult: false,
+  allPassage: [],
+  deleteResult: 0
 };
 
 //Action
@@ -37,6 +41,14 @@ const actions = {
   async [ACTIONS.PUBLISH_PASSAGE](context, info) {
     const result = await publishPassage(info);
     context.commit(MUTATIONS.PUBLISH_PASSAGE, result);
+  },
+  async [ACTIONS.FETCH_ALL_PASSAGE](context) {
+    const result = await fetchAllPassage();
+    context.commit(MUTATIONS.SET_ALL_PASSAGE, result);
+  },
+  async [ACTIONS.DELETE_PASSAGE](context, id) {
+    const deleteResult = await deletePassage(id);
+    context.commit(MUTATIONS.DELETE_PASSAGE, deleteResult.success);
   }
 };
 
@@ -56,6 +68,12 @@ const mutations = {
   },
   [MUTATIONS.PUBLISH_PASSAGE](state, result) {
     state.publishResult = result;
+  },
+  [MUTATIONS.SET_ALL_PASSAGE](state, result) {
+    state.allPassage = result;
+  },
+  [MUTATIONS.DELETE_PASSAGE](state, result) {
+    state.deleteResult = result;
   }
 };
 
