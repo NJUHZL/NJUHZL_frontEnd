@@ -12,5 +12,14 @@ module.exports = {
     historyApiFallback: {
       index: "/index.html" //index.html为当前目录创建的template.html
     }
+  },
+  configureWebpack: {
+    externals: {
+      vue: "Vue",
+      vuex: "Vuex",
+      "vue-router": "VueRouter",
+      "element-ui": "ELEMENT",
+      axios: "axios"
+    }
   }
 };
