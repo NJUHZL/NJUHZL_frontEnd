@@ -1,6 +1,6 @@
 <template>
   <div class="bannerContainer" style="width: 100%;" id="banner">
-    <img src="../assets/img/banner.png" style="width: 100%;">
+    <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/banner.png" style="width: 100%;">
     <div style="text-align: center">
       <h1>Hello and welcome to our websites!</h1>
       <p style="line-height: 30px">

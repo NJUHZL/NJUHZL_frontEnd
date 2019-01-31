@@ -4,16 +4,16 @@
     <div class="page-content">
       <div style="text-align: center">
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/事实核查.png"/>
+          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/事实核查.png"/>
         </div>
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/可视化新闻.png"/>
+          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/可视化新闻.png"/>
         </div>
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/研究中心.png"/>
+          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/研究中心.png"/>
         </div>
         <div class="el-card is-always-shadow function-card">
-          <img src="../assets/img/质量报告.png"/>
+          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/质量报告.png"/>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
       ></abstract>
       <!--<abstract></abstract>-->
       <!--<abstract></abstract>-->
-      <img style="width: 2%;display: inline-block;vertical-align: top;padding-top: 10px" src="../assets/img/commentIcon.png">
+      <img style="width: 2%;display: inline-block;vertical-align: top;padding-top: 10px" src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/commentIcon.png">
       <div style="width: 18%;display: inline-block;vertical-align: top">
         <recommendComment v-for="(item, id) in latestComments"
                           v-bind:key="id"

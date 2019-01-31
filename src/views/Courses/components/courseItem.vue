@@ -28,11 +28,12 @@ export default {
   props: {
     pictureURL: {
       type: String,
-      default: require("../../../assets/img/defaultVideoPreview.jpg")
+      default:
+        "http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/defaultVideoPreview.jpg"
     },
     videoUrl: {
       type: String,
-      default: require("../../../assets/test.mp4")
+      default: ""
     },
     title: {
       type: String,

@@ -30,7 +30,7 @@ export default {
   components: { NewsItem, LeftNavi },
   data() {
     return {
-      logoURL: require("../../assets/img/realistic.png")
+      logoURL: "http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/realistic.png"
     };
   },
   computed: {

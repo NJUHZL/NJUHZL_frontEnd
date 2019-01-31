@@ -27,12 +27,13 @@ export default {
     return {
       carouselPassages: [
         {
-          src: require("../assets/img/loginBackground.jpg"),
+          src:
+            "http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/realistic.png",
           name: "文章1",
           index: 1
         },
         {
-          src: require("../assets/img/banner.png"),
+          src: "http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/banner.png",
           name: "文章2",
           index: 2
         }

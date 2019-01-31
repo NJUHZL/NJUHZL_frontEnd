@@ -5,9 +5,9 @@
         <i class="el-icon-share"></i>
       </div>
       <div id="shareContainer">
-        <img src="../assets/img/qq.png" class="shareChoice" v-on:click="qqShare"/>
-        <img src="../assets/img/wechat.png" class="shareChoice"/>
-        <img src="../assets/img/sina.png" class="shareChoice" v-on:click="sinaShare"/>
+        <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/qq.png" class="shareChoice" v-on:click="qqShare"/>
+        <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/wechat.png" class="shareChoice"/>
+        <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/sina.png" class="shareChoice" v-on:click="sinaShare"/>
       </div>
     </div>
     <div class="rightItem" id="favourite">

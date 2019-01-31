@@ -48,7 +48,7 @@ export default {
   components: { leftNaviOfCourses, courseItem },
   data() {
     return {
-      currentVideo: require("../../assets/test.mp4")
+      currentVideo: ""
     };
   },
   computed: {

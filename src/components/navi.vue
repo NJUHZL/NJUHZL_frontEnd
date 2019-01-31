@@ -12,7 +12,7 @@
     >
       <el-menu-item index="1" style="padding-bottom: 2px">
         <a href="/">
-          <img src="../assets/img/hzl_logo.png" style="width: 58px">
+          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/hzl_logo.png" style="width: 58px">
         </a>
       </el-menu-item>
       <el-menu-item id="evaluate" index="3">

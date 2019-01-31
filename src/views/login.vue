@@ -19,7 +19,7 @@
       </div>
     </div>
     <a href="/">
-      <img src="../assets/img/hzl_logo.png" style="width: 8%;position: fixed;top:20px;left: 6%">
+      <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/hzl_logo.png" style="width: 8%;position: fixed;top:20px;left: 6%">
     </a>
   </div>
 </template>
@@ -68,7 +68,7 @@ export default {
   width: 100%;
   min-height: 600px;
   background: #222;
-  background-image: url("../assets/img/loginBackground.jpg");
+  background-image: url("http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/loginBackground.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
