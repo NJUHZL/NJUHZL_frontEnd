@@ -13,7 +13,7 @@ const state = {
   hotPassage: [],
   oneClassOfPassageList: [],
   currentClass: "事实核查",
-  publishResult: false,
+  publishResult: 0,
   allPassage: [],
   deleteResult: 0
 };
@@ -40,7 +40,7 @@ const actions = {
 
   async [ACTIONS.PUBLISH_PASSAGE](context, info) {
     const result = await publishPassage(info);
-    context.commit(MUTATIONS.PUBLISH_PASSAGE, result);
+    context.commit(MUTATIONS.PUBLISH_PASSAGE, result.success);
   },
   async [ACTIONS.FETCH_ALL_PASSAGE](context) {
     const result = await fetchAllPassage();

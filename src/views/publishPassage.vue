@@ -28,7 +28,8 @@
         v-model="content"
         style="margin-top: 20px">
       </el-input>
-      <input type="file" class="picturesChoose" id="picturesChoose" placeholder="选取图片" multiple="multiple" style="margin-top: 20px"/>
+      <input type="file" @change="fileChanged" accept="image/jpg,image/jpeg,image/png,image/bmp" class="picturesChoose" ref="file" id="picturesChoose" placeholder="选取图片" multiple="multiple" style="margin-top: 20px"/>
+      <el-button round @click="submit">确认上传</el-button>
       <br>
       <el-button type="primary" plain @click="publishPassage" style="margin-top: 20px;width: 50%">发布</el-button>
     </div>
@@ -37,12 +38,15 @@
 </template>
 
 <script>
+//import { PUBLISH_PASSAGE } from "@/store/type/actions";
+
 import { PUBLISH_PASSAGE } from "@/store/type/actions";
 
 export default {
   name: "publishPassage",
   data() {
     return {
+      files: [],
       title: "",
       abstract: "",
       content: "",
@@ -50,24 +54,129 @@ export default {
       keyword2: "",
       keyword3: "",
       type: "",
-      options: ["事实核查", "可视化新闻", "研究中心", "质量报告"]
+      options: ["事实核查", "可视化新闻", "研究中心", "质量报告"],
+      pictureUrls: []
     };
   },
   methods: {
     publishPassage: async function() {
-      let files = document.getElementById("picturesChoose").files;
-      let formData = new FormData();
-      for (let i = 0; i < files.length; i++) {
-        formData.append("files", files[i]);
-        console.log(i);
+      await this.$store.dispatch(PUBLISH_PASSAGE, {
+        title: this.title,
+        abstract: this.abstract,
+        content: this.content,
+        keyword1: this.keyword1,
+        keyword2: this.keyword2,
+        keyword3: this.keyword3,
+        type: this.type,
+        pictureUrls: this.pictureUrls
+      });
+      console.log(this.publishResult);
+      if (this.publishResult.code === 1) {
+        this.$message({
+          message: "发布成功",
+          type: "success"
+        });
+        this.$router.push("./passageAdmin");
+      } else {
+        //fail to login
+        this.$message({
+          message: "发布失败",
+          type: "error"
+        });
       }
-      formData.append("title", this.title);
-      formData.append("abstract", this.abstract);
-      formData.append("content", this.content);
-      formData.append("keyword1", this.keyword1);
-      formData.append("keyword2", this.keyword2);
-      formData.append("keyword3", this.keyword3);
-      await this.$store.dispatch(PUBLISH_PASSAGE, formData);
+    },
+
+    submit() {
+      let that = this;
+      console.log(this.files);
+      // if (this.files.length === 0) {
+      //     console.warn('no file!');
+      //     return
+      // }
+      //  这里是OSS
+      let OSS = require("ali-oss");
+      const client = new OSS({
+        region: "oss-cn-hangzhou",
+        accessKeyId: "LTAIL4RFw3fPAweH",
+        accessKeySecret: "xOw4hzztNsCPm5LtJoWVwsvSOFl8IB",
+        bucket: "njuhzl"
+      });
+      const fNum = this.files;
+      for (let i = 0; i < fNum.length; i++) {
+        let f = fNum[i].file;
+        console.log(f);
+        const Name = f.name;
+        console.log(Name);
+        const suffix = Name.substr(Name.indexOf("."));
+        const obj = this.timestamp();
+        const storeAs = "passagePictures/" + obj + suffix; //  路径+时间戳+后缀名
+        console.log(storeAs);
+        client
+          .multipartUpload(storeAs, f)
+          .then(function(result) {
+            let data = result.res.requestUrls[0];
+            let url = data.split("?uploadId")[0];
+            console.log(url);
+            that.pictureUrls.push(url);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+      }
+    },
+    //  时间戳
+    timestamp: function() {
+      const time = new Date();
+      const y = time.getFullYear();
+      const m = time.getMonth() + 1;
+      const d = time.getDate();
+      const h = time.getHours();
+      const mm = time.getMinutes();
+      const s = time.getSeconds();
+      const ms = time.getMilliseconds();
+      return (
+        "" +
+        y +
+        this.Add0(m) +
+        this.Add0(d) +
+        this.Add0(h) +
+        this.Add0(mm) +
+        this.Add0(s) +
+        this.Add0(ms)
+      );
+    },
+
+    Add0: function(m) {
+      return m < 10 ? "0" + m : m;
+    },
+
+    fileChanged() {
+      const list = this.$refs.file.files;
+      for (let i = 0; i < list.length; i++) {
+        if (!this.isContain(list[i])) {
+          const item = {
+            name: list[i].name,
+            size: list[i].size,
+            file: list[i]
+          };
+          this.html5Reader(list[i], item);
+          this.files.push(item);
+        }
+      }
+      //this.$refs.file.value = "";
+    },
+    // 将图片文件转成BASE64格式
+    html5Reader(file, item) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        this.$set(item, "src", e.target.result);
+      };
+      reader.readAsDataURL(file);
+    },
+    isContain(file) {
+      return this.files.find(
+        item => item.name === file.name && item.size === file.size
+      );
     }
   }
 };

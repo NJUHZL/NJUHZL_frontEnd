@@ -1,7 +1,6 @@
 <template>
   <div class="whole" id="nav" style="width:100%;float: top">
     <el-menu
-      :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
       background-color="transparent"

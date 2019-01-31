@@ -21,10 +21,28 @@ export const fetchOneClassOfPassageList = className => {
   });
 };
 
-export const publishPassage = info => {
+export const publishPassage = ({
+  title,
+  abstract,
+  content,
+  keyword1,
+  keyword2,
+  keyword3,
+  type,
+  pictureUrls
+}) => {
   return request(`${PASSAGE_MODULE}/publish`, {
     method: "POST",
-    body: info
+    body: {
+      title: title,
+      abstract: abstract,
+      content: content,
+      keyword1: keyword1,
+      keyword2: keyword2,
+      keyword3: keyword3,
+      type: type,
+      picUrls: pictureUrls
+    }
   });
 };
 
