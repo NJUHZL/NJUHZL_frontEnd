@@ -28,10 +28,15 @@
         v-model="content"
         style="margin-top: 20px">
       </el-input>
-      <input type="file" @change="fileChanged" accept="image/jpg,image/jpeg,image/png,image/bmp" class="picturesChoose" ref="file" id="picturesChoose" placeholder="选取图片" multiple="multiple" style="margin-top: 20px"/>
-      <el-button round @click="submit">确认上传</el-button>
+      <!--<input type="file" @change="fileChanged" accept="image/jpg,image/jpeg,image/png,image/bmp" class="picturesChoose" ref="file" id="picturesChoose" placeholder="选取图片" multiple="multiple" style="margin-top: 20px"/>-->
+      <el-upload class="upload-demo" drag action="" multiple accept="image/jpg,image/jpeg,image/png,image/bmp" :http-request="fileChanged" style="margin-top: 20px">
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，建议不超过500kb</div>
+      </el-upload>
+      <el-button round @click="submit" :loading="loading" style="margin-top: 20px">确认上传</el-button>
       <br>
-      <el-button type="primary" plain @click="publishPassage" style="margin-top: 20px;width: 50%">发布</el-button>
+      <el-button type="primary" plain @click="publishPassage" style="margin-top: 20px;width: 50%" :disabled="waiting">发布</el-button>
     </div>
 
   </div>
@@ -54,6 +59,8 @@ export default {
       keyword2: "",
       keyword3: "",
       type: "",
+      waiting: false,
+      loading: false,
       options: ["事实核查", "可视化新闻", "研究中心", "质量报告"],
       pictureUrls: []
     };
@@ -87,7 +94,11 @@ export default {
     },
 
     submit() {
+      console.log();
+      this.pictureUrls = [];
       let that = this;
+      that.waiting = true;
+      that.loading = true;
       console.log(this.files);
       // if (this.files.length === 0) {
       //     console.warn('no file!');
@@ -118,6 +129,14 @@ export default {
             let url = data.split("?uploadId")[0];
             console.log(url);
             that.pictureUrls.push(url);
+            if (that.pictureUrls.length === that.files.length) {
+              that.$message({
+                message: "上传成功",
+                type: "success"
+              });
+              that.waiting = false;
+              that.loading = false;
+            }
           })
           .catch(function(err) {
             console.log(err);
@@ -150,20 +169,30 @@ export default {
       return m < 10 ? "0" + m : m;
     },
 
-    fileChanged() {
-      const list = this.$refs.file.files;
-      for (let i = 0; i < list.length; i++) {
-        if (!this.isContain(list[i])) {
-          const item = {
-            name: list[i].name,
-            size: list[i].size,
-            file: list[i]
-          };
-          this.html5Reader(list[i], item);
-          this.files.push(item);
-        }
-      }
+    fileChanged(param) {
+      // const list = this.$refs.file.files;
+      // for (let i = 0; i < list.length; i++) {
+      //   if (!this.isContain(list[i])) {
+      //     const item = {
+      //       name: list[i].name,
+      //       size: list[i].size,
+      //       file: list[i]
+      //     };
+      //     this.html5Reader(list[i], item);
+      //     this.files.push(item);
+      //   }
+      // }
       //this.$refs.file.value = "";
+      const file = param.file;
+      if (!this.isContain(file)) {
+        const item = {
+          name: file.name,
+          size: file.size,
+          file: file
+        };
+        this.html5Reader(file, item);
+        this.files.push(item);
+      }
     },
     // 将图片文件转成BASE64格式
     html5Reader(file, item) {
