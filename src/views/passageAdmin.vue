@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 40%;margin-left: 30%;text-align: center">
+    <div style="width: 60%;margin-left: 20%;text-align: center">
     <h1 style="color: lightskyblue">文章管理</h1>
     <el-table
             :data="allPassage"
@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     deleteRow: async function(row) {
-      let id = this.allPassage[row].id;
+      console.log(row);
+      let id = row.id;
       this.allPassage.splice(row, 1);
       await this.$store.dispatch(DELETE_PASSAGE, {
         id: id

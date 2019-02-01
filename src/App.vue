@@ -17,6 +17,13 @@ export default {
       isRouterAlive: true
     };
   },
+  // mounted() {
+  //   window.onbeforeunload = function() {
+  //     console.log("clear")
+  //     localStorage.removeItem("njuhzl_state");
+  //     localStorage.removeItem("njuhzl_root");
+  //   };
+  // },
 
   methods: {
     reload() {

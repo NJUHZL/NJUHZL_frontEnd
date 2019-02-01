@@ -40,7 +40,7 @@ const actions = {
 
   async [ACTIONS.PUBLISH_PASSAGE](context, info) {
     const result = await publishPassage(info);
-    context.commit(MUTATIONS.PUBLISH_PASSAGE, result.success);
+    context.commit(MUTATIONS.PUBLISH_PASSAGE, result.code);
   },
   async [ACTIONS.FETCH_ALL_PASSAGE](context) {
     const result = await fetchAllPassage();
@@ -48,7 +48,7 @@ const actions = {
   },
   async [ACTIONS.DELETE_PASSAGE](context, id) {
     const deleteResult = await deletePassage(id);
-    context.commit(MUTATIONS.DELETE_PASSAGE, deleteResult.success);
+    context.commit(MUTATIONS.DELETE_PASSAGE, deleteResult.code);
   }
 };
 

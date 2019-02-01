@@ -41,7 +41,7 @@ export const publishPassage = ({
       keyword2: keyword2,
       keyword3: keyword3,
       type: type,
-      picUrls: pictureUrls
+      picUrls: JSON.stringify(pictureUrls)
     }
   });
 };

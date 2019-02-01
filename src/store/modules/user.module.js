@@ -22,11 +22,18 @@ const actions = {
   },
   async [ACTIONS.LOGIN](context, info) {
     const { code, token } = await login(info);
-    if (code === 1) {
+    if (code > 0) {
       //登录成功
       setToken(token);
       context.commit(MUTATIONS.SET_LOGIN_ERROR, false);
       context.commit(MUTATIONS.SET_AUTH, true);
+      localStorage.njuhzl_state = "online";
+      if (code === 2) {
+        localStorage.njuhzl_root = "ok";
+        localStorage.njuhzl_msg = "管理员登录成功";
+      } else {
+        localStorage.njuhzl_msg = "登录成功";
+      }
     } else {
       //登录失败
       context.commit(MUTATIONS.SET_LOGIN_ERROR, true);

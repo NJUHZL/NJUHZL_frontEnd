@@ -48,7 +48,9 @@ export default {
       $("#signup").attr("href", "#");
       $("#signup").text("退出登录");
       $("#signup").on("click", function() {
+        console.log("logout");
         localStorage.removeItem("njuhzl_state");
+        localStorage.removeItem("njuhzl_root");
         that.reload();
       });
     }

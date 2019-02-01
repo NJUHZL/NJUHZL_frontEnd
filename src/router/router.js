@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: "history",
   //base: "/NJUHZL_frontEnd",
   routes: [
@@ -62,16 +62,31 @@ export default new VueRouter({
       component: () => import("@/views/signup.vue")
     },
     {
-      path: "/secret/hidden/backdoor/publishPassage",
+      path: "/backstage/publishPassage",
       name: "publishPassage",
       meta: { requireAuth: false },
       component: () => import("@/views/publishPassage.vue")
     },
     {
-      path: "/secret/hidden/backdoor/passageAdmin",
+      path: "/backstage/passageAdmin",
       name: "passageAdmin",
       meta: { requireAuth: false },
       component: () => import("@/views/passageAdmin.vue")
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  //localStorage.njuhzl_root = "ok"
+  if (
+    to.path.indexOf("/backstage/") > -1 &&
+    localStorage.njuhzl_root !== "ok"
+  ) {
+    console.log(localStorage.getItem("njuhzl_root"));
+    next({ name: "login" });
+    console.log("here");
+  }
+  next();
+});
+
+export default router;
