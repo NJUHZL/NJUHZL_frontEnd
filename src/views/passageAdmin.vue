@@ -7,7 +7,7 @@
             stripe>
         <el-table-column
                 fixed
-                label="序号"
+                label="id"
                 prop="id"
                 width="80">
         </el-table-column>
@@ -30,6 +30,8 @@
             </template>
         </el-table-column>
     </el-table>
+        <a href="/"><el-button type="primary" plain style="margin-top: 20px;margin-right: 20px">返回主页</el-button></a>
+        <a href="/backStage/publishPassage"><el-button type="primary" plain>发布文章</el-button></a>
     </div>
 </template>
 

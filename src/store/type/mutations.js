@@ -18,3 +18,4 @@ export const SET_CURRENT_CLASS_OF_COURSE = "setCurrentClassOfCourse"; //设置�
 export const PUBLISH_PASSAGE = "publishPassage";
 export const SET_ALL_PASSAGE = "setAllPassage";
 export const DELETE_PASSAGE = "deletePassage";
+export const SET_PASSAGE_DETAIL = "setPassageDetail";

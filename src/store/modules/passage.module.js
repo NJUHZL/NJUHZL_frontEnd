@@ -5,7 +5,8 @@ import {
   fetchOneClassOfPassageList,
   publishPassage,
   fetchAllPassage,
-  deletePassage
+  deletePassage,
+  fetchPassageDetail
 } from "@/api/passageService";
 
 //State
@@ -15,7 +16,8 @@ const state = {
   currentClass: "事实核查",
   publishResult: 0,
   allPassage: [],
-  deleteResult: 0
+  deleteResult: 0,
+  passageInfo: {}
 };
 
 //Action
@@ -49,6 +51,10 @@ const actions = {
   async [ACTIONS.DELETE_PASSAGE](context, id) {
     const deleteResult = await deletePassage(id);
     context.commit(MUTATIONS.DELETE_PASSAGE, deleteResult.code);
+  },
+  async [ACTIONS.FETCH_PASSAGE_DETAIL](context, id) {
+    const result = await fetchPassageDetail(id);
+    context.commit(MUTATIONS.SET_PASSAGE_DETAIL, result);
   }
 };
 
@@ -74,6 +80,9 @@ const mutations = {
   },
   [MUTATIONS.DELETE_PASSAGE](state, result) {
     state.deleteResult = result;
+  },
+  [MUTATIONS.SET_PASSAGE_DETAIL](state, result) {
+    state.passageInfo = result;
   }
 };
 

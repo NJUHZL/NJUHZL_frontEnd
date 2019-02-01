@@ -36,10 +36,10 @@ const router = new VueRouter({
           component: () => import("@/views/News/index.vue")
         },
         {
-          name: "article",
-          path: "/article",
+          name: "passageDetail",
+          path: "/passageDetail",
           meta: { requireAuth: true },
-          component: () => import("@/views/Article/index.vue")
+          component: () => import("@/views/PassageDetail.vue")
         },
         {
           name: "courses",
@@ -82,9 +82,14 @@ router.beforeEach((to, from, next) => {
     to.path.indexOf("/backstage/") > -1 &&
     localStorage.njuhzl_root !== "ok"
   ) {
-    console.log(localStorage.getItem("njuhzl_root"));
     next({ name: "login" });
     console.log("here");
+  }
+  if (
+    to.path.indexOf("/passageDetail") > -1 &&
+    localStorage.getItem("njuhzl_passageID") === null
+  ) {
+    next("/");
   }
   next();
 });

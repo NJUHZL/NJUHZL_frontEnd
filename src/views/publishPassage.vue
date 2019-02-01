@@ -1,5 +1,9 @@
 <template>
   <div style="width: 100%;">
+    <div style="position: absolute;right: 0;top:10px"></div>
+    <a href="/" style="margin-right: 20px">返回主页</a>
+    <a href="/backstage/passageAdmin">文章管理</a>
+
     <div style="width: 40%;text-align: center;margin-left: 30%">
       <h1 style="color: lightskyblue">文章发布</h1>
       <el-input v-model="title" placeholder="请输入标题" maxlength="20" style="margin-bottom: 20px"></el-input>

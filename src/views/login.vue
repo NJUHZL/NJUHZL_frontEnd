@@ -59,7 +59,11 @@ export default {
           message: localStorage.njuhzl_msg,
           type: "success"
         });
-        this.$router.push({ name: "home" });
+        if (localStorage.njuhzl_root === "ok") {
+          this.$router.push("/backstage/passageAdmin");
+        } else {
+          this.$router.push({ name: "home" });
+        }
       }
     }
   }

@@ -59,3 +59,13 @@ export const deletePassage = ({ id }) => {
     }
   });
 };
+
+export const fetchPassageDetail = ({ id }) => {
+  console.log(id);
+  return request(`${PASSAGE_MODULE}/detail`, {
+    method: "POST",
+    body: {
+      passageID: id
+    }
+  });
+};
