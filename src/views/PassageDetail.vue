@@ -72,6 +72,10 @@ export default {
     await this.$store.dispatch(FETCH_PASSAGE_DETAIL, {
       id: parseInt(localStorage.njuhzl_passageID)
     });
+    window.onbeforeunload = function() {
+      console.log("clearpid");
+      localStorage.removeItem("njuhzl_passageID");
+    };
   }
 };
 </script>

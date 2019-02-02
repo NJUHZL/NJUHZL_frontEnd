@@ -1,64 +1,79 @@
 <template>
-  <div>
-    <banner class="banner"/>
-    <div class="page-content">
-      <div style="text-align: center">
-        <div class="el-card is-always-shadow function-card">
-          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/事实核查.png"/>
+  <div style="position: relative">
+    <div id="navi">
+      <navi></navi>
+    </div>
+    <div>
+      <banner class="banner"/>
+      <div class="page-content">
+        <div style="text-align: center">
+          <div class="el-card is-always-shadow function-card">
+            <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/事实核查.png"/>
+          </div>
+          <div class="el-card is-always-shadow function-card">
+            <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/可视化新闻.png"/>
+          </div>
+          <div class="el-card is-always-shadow function-card">
+            <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/研究中心.png"/>
+          </div>
+          <div class="el-card is-always-shadow function-card">
+            <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/质量报告.png"/>
+          </div>
         </div>
-        <div class="el-card is-always-shadow function-card">
-          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/可视化新闻.png"/>
+      </div>
+      <carousel style="margin-top: 90px"></carousel>
+      <div style="margin-left: 10%;margin-top: 80px">
+        <abstract v-for="(item, id) in latestPassage"
+                  v-bind:key="id"
+                  :title="item.title"
+                  :abstract="item.script"
+                  :postTime="item.date"
+                  @click.native="showDetail(item.id)"
+                  style="cursor: pointer;"
+        ></abstract>
+        <!--<abstract></abstract>-->
+        <!--<abstract></abstract>-->
+        <img style="width: 2%;display: inline-block;vertical-align: top;padding-top: 10px" src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/commentIcon.png">
+        <div style="width: 18%;display: inline-block;vertical-align: top">
+          <recommendComment v-for="(item, id) in latestComments"
+                            v-bind:key="id"
+                            :comment="item.comment"
+                            :postTime="item.postTime"
+                            @click.native="showDetail(item.passageID)"
+                            style="cursor: pointer;"
+          ></recommendComment>
         </div>
-        <div class="el-card is-always-shadow function-card">
-          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/研究中心.png"/>
+      </div>
+      <div style="text-align: center;margin-top: 50px;padding-bottom: 60px">
+        <div class="introBlock">
+          <h2><i class="el-icon-success" style="color: lightblue"></i>  新闻核实</h2>
+          <p>“核真录”始终免费开放的功能，为公众提供免费的新闻核实、查验服务，对各种假新闻、错误信息、谣言等进行核查和澄清。</p>
+          <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
         </div>
-        <div class="el-card is-always-shadow function-card">
-          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/质量报告.png"/>
+        <div class="introBlock">
+          <h2><i class="el-icon-success" style="color: lightblue"></i>  课程培训</h2>
+          <p>“核真录”开拓新闻素养课程培训作为会员订阅付费内容，我们将长期连续提供专业的新闻素养教学课程及实施案例分析。</p>
+          <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
+        </div>
+        <div class="introBlock">
+          <h2><i class="el-icon-success" style="color: lightblue"></i>  行研报告</h2>
+          <p>“核真录”开拓媒介研究报告作为会员订阅付费内容，我们将以会员付费订阅的方式定期向订阅的会员推送最前沿的媒介研究报告。</p>
+          <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
         </div>
       </div>
     </div>
-    <carousel style="margin-top: 90px"></carousel>
-    <div style="margin-left: 10%;margin-top: 80px">
-      <abstract v-for="(item, id) in latestPassage"
-                 v-bind:key="id"
-                 :title="item.title"
-                 :abstract="item.script"
-                 :postTime="item.date"
-                @click="openArticle(item.id)"
-      ></abstract>
-      <!--<abstract></abstract>-->
-      <!--<abstract></abstract>-->
-      <img style="width: 2%;display: inline-block;vertical-align: top;padding-top: 10px" src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/commentIcon.png">
-      <div style="width: 18%;display: inline-block;vertical-align: top">
-        <recommendComment v-for="(item, id) in latestComments"
-                          v-bind:key="id"
-                          :comment="item.comment"
-                          :postTime="item.postTime"
-                          @click="openArticle(item.passageID)"
-        ></recommendComment>
-      </div>
-    </div>
-    <div style="text-align: center;margin-top: 50px">
-      <div class="introBlock">
-        <h2><i class="el-icon-success" style="color: lightblue"></i>  新闻核实</h2>
-        <p>“核真录”始终免费开放的功能，为公众提供免费的新闻核实、查验服务，对各种假新闻、错误信息、谣言等进行核查和澄清。</p>
-        <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
-      </div>
-      <div class="introBlock">
-        <h2><i class="el-icon-success" style="color: lightblue"></i>  课程培训</h2>
-        <p>“核真录”开拓新闻素养课程培训作为会员订阅付费内容，我们将长期连续提供专业的新闻素养教学课程及实施案例分析。</p>
-        <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
-      </div>
-      <div class="introBlock">
-        <h2><i class="el-icon-success" style="color: lightblue"></i>  行研报告</h2>
-        <p>“核真录”开拓媒介研究报告作为会员订阅付费内容，我们将以会员付费订阅的方式定期向订阅的会员推送最前沿的媒介研究报告。</p>
-        <a>更多信息 <p style="font-size: 10px;display: inline-block">>></p></a>
-      </div>
+    <foot id="foot"></foot>
+    <div id="rightBar">
+      <rightBar></rightBar>
     </div>
   </div>
+
 </template>
 
 <script>
+import navi from "@/components/navi.vue";
+import foot from "@/components/foot.vue";
+import rightBar from "@/components/rightBar.vue";
 import banner from "@/components/banner.vue";
 import carousel from "@/components/carousel.vue";
 import abstract from "@/components/abstract.vue";
@@ -69,11 +84,20 @@ import { FETCH_LATEST_COMMENTS } from "@/store/type/actions";
 
 export default {
   name: "Home",
-  components: { banner, carousel, abstract, recommendComment },
+  components: {
+    banner,
+    carousel,
+    abstract,
+    recommendComment,
+    navi,
+    foot,
+    rightBar
+  },
   methods: {
-    openArticle(passageID) {
+    showDetail(passageID) {
+      console.log(passageID);
       localStorage.njuhzl_passageID = passageID;
-      this.$router.push({ name: "article" });
+      this.$router.replace({ name: "passageDetail" });
     }
   },
   computed: {
@@ -93,6 +117,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#navi {
+  z-index: 100;
+}
+
 .banner {
   position: relative;
   z-index: -1;

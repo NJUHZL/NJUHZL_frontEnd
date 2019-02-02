@@ -24,10 +24,8 @@ const router = new VueRouter({
       component: () => import("@/layout/defaultLayout"),
       children: [
         {
-          name: "home",
           path: "",
-          meta: { requireAuth: true },
-          component: () => import("@/views/Home.vue")
+          redirect: "/home"
         },
         {
           name: "news",
@@ -48,6 +46,12 @@ const router = new VueRouter({
           component: () => import("@/views/Courses/index.vue")
         }
       ]
+    },
+    {
+      path: "/home",
+      name: "home",
+      meta: { requireAuth: true },
+      component: () => import("@/views/Home.vue")
     },
     {
       path: "/login",
