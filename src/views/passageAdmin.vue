@@ -53,6 +53,10 @@ export default {
   },
   beforeCreate() {
     if (localStorage.njuhzl_root !== "ok") {
+      this.$message({
+        message: "当前非管理员",
+        type: "error"
+      });
       this.$router.replace("/login");
     }
   },
