@@ -5,13 +5,15 @@
     </div>
     <div class="items">
       <news-item
-        v-for="(item, index) in oneClassOfPassageList"
+        v-for="(item, index) in oneClassOfPassageList.passage"
         v-bind:key="index"
         :title="item.title"
         :newsSource="item.newsSource"
         :newsClass="item.newsClass"
         :contentShort="item.contentShort"
-        @click.native="showDetail(item.passageID)"
+        :keywords="item.keywords"
+        @click.native="showDetail(item.passageId)"
+        style="cursor: pointer"
       ></news-item>
     </div>
   </div>
@@ -45,17 +47,18 @@ export default {
       this.$store.dispatch(FETCH_ONE_CLASS_OF_PASSAGE_LIST, key);
       this.$store.dispatch(SET_CURRENT_CLASS, key);
     },
-      showDetail(passageID) {
-          console.log(passageID);
-          localStorage.njuhzl_passageID = passageID;
-          this.$router.push({ name: "passageDetail" });
-      }
+    showDetail(passageID) {
+      console.log(passageID);
+      localStorage.njuhzl_passageID = passageID;
+      this.$router.push({ name: "passageDetail" });
+    }
   },
   async mounted() {
     await this.$store.dispatch(
       FETCH_ONE_CLASS_OF_PASSAGE_LIST,
       this.currentClass
     );
+    console.log(this.oneClassOfPassageList);
     await this.$store.dispatch(SET_CURRENT_CLASS, this.currentClass);
   }
 };
