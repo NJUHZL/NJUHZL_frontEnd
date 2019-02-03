@@ -11,6 +11,7 @@
         :newsSource="item.newsSource"
         :newsClass="item.newsClass"
         :contentShort="item.contentShort"
+        @click.native="showDetail(item.passageID)"
       ></news-item>
     </div>
   </div>
@@ -43,7 +44,12 @@ export default {
     fetchOneClassOfPassageList(key) {
       this.$store.dispatch(FETCH_ONE_CLASS_OF_PASSAGE_LIST, key);
       this.$store.dispatch(SET_CURRENT_CLASS, key);
-    }
+    },
+      showDetail(passageID) {
+          console.log(passageID);
+          localStorage.njuhzl_passageID = passageID;
+          this.$router.push({ name: "passageDetail" });
+      }
   },
   async mounted() {
     await this.$store.dispatch(
