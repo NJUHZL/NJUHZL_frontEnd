@@ -10,7 +10,7 @@
         :title="item.title"
         :newsSource="item.newsSource"
         :newsClass="item.newsClass"
-        :contentShort="item.contentShort"
+        :abstract="item.abstract"
         :keywords="item.keywords"
         @click.native="showDetail(item.passageId)"
         style="cursor: pointer"

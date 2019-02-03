@@ -8,7 +8,7 @@
       </div>
       <div class="content">
         <img class="picture" v-bind:src="pictureURL">
-        <div class="text">{{contentShort}}</div>
+        <div class="text">{{abstract}}</div>
       </div>
       <div class="footer">
         <div class="left">
@@ -36,7 +36,7 @@ export default {
       type: String,
       default: "这是新闻的标题"
     },
-    contentShort: {
+    abstract: {
       type: String,
       default:
         "是你的看你发的吃你的尺度回复地方还是看得出你快点是你的看你发的吃你的尺度回复地方还是看得出你快点是你的看你发的吃你的尺度回复地方还是看得出你快点"

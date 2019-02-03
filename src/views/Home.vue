@@ -26,7 +26,7 @@
         <abstract v-for="(item, id) in latestPassage"
                   v-bind:key="id"
                   :title="item.title"
-                  :abstract="item.script"
+                  :abstract="item.abstract"
                   :postTime="item.date"
                   @click.native="showDetail(item.id)"
                   style="cursor: pointer;vertical-align: top"
