@@ -78,6 +78,11 @@ export default {
       publishResult: state => state.passage.publishResult
     })
   },
+  beforeCreate() {
+    if (localStorage.njuhzl_root !== "ok") {
+      this.$router.replace("/login");
+    }
+  },
   methods: {
     publishPassage: async function() {
       await this.$store.dispatch(PUBLISH_PASSAGE, {

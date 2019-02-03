@@ -80,16 +80,16 @@ const router = new VueRouter({
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  //localStorage.njuhzl_root = "ok"
-  if (
-    to.path.indexOf("/backstage/") > -1 &&
-    localStorage.njuhzl_root !== "ok"
-  ) {
-    next({ name: "login" });
-    console.log("here");
-  }
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   //localStorage.njuhzl_root = "ok"
+//   // if (
+//   //   to.path.indexOf("/backstage/") > -1 &&
+//   //   localStorage.njuhzl_root !== "ok"
+//   // ) {
+//   //   next({ name: "login" });
+//   //   console.log("here");
+//   // }
+//   // next();
+// });
 
 export default router;

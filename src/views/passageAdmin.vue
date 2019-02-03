@@ -51,6 +51,11 @@ export default {
     //挂载后拉取数据
     await this.$store.dispatch(FETCH_ALL_PASSAGE);
   },
+  beforeCreate() {
+    if (localStorage.njuhzl_root !== "ok") {
+      this.$router.replace("/login");
+    }
+  },
   methods: {
     deleteRow: async function(row) {
       console.log(row);
