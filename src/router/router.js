@@ -89,12 +89,6 @@ router.beforeEach((to, from, next) => {
     next({ name: "login" });
     console.log("here");
   }
-  if (
-    to.path.indexOf("/passageDetail") > -1 &&
-    localStorage.getItem("njuhzl_passageID") === null
-  ) {
-    next("/");
-  }
   next();
 });
 

@@ -29,7 +29,7 @@
                   :abstract="item.script"
                   :postTime="item.date"
                   @click.native="showDetail(item.id)"
-                  style="cursor: pointer;"
+                  style="cursor: pointer;vertical-align: top"
         ></abstract>
         <!--<abstract></abstract>-->
         <!--<abstract></abstract>-->
@@ -40,7 +40,7 @@
                             :comment="item.comment"
                             :postTime="item.postTime"
                             @click.native="showDetail(item.passageID)"
-                            style="cursor: pointer;"
+                            style="cursor: pointer;vertical-align: top"
           ></recommendComment>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default {
     showDetail(passageID) {
       console.log(passageID);
       localStorage.njuhzl_passageID = passageID;
-      this.$router.replace({ name: "passageDetail" });
+      this.$router.push({ name: "passageDetail" });
     }
   },
   computed: {

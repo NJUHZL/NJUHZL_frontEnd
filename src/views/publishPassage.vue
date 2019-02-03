@@ -7,13 +7,15 @@
     <div style="width: 40%;text-align: center;margin-left: 30%">
       <h1 style="color: lightskyblue">文章发布</h1>
       <el-input v-model="title" placeholder="请输入标题" maxlength="20" style="margin-bottom: 20px"></el-input>
-      <el-select v-model="type" placeholder="请选择文章分类" style="margin-bottom: 10px">
+      <el-select v-model="type" placeholder="请选择文章分类" style="margin-bottom: 10px;width: 40%">
         <el-option
                 v-for="item in options"
                 :key="item"
                 :value="item">
         </el-option>
-      </el-select><br>
+      </el-select>
+      <el-input v-model="newsSource" placeholder="请输入来源" maxlength="10" style="margin-left: 20px;width: 30%"></el-input>
+      <br>
       <el-input v-model="keyword1" placeholder="请输入关键词1" maxlength="5" style="width: 30%;margin: 1%"></el-input>
       <el-input v-model="keyword2" placeholder="请输入关键词2" maxlength="5" style="width: 30%;margin: 1%"></el-input>
       <el-input v-model="keyword3" placeholder="请输入关键词3" maxlength="5" style="width: 30%;margin: 1%"></el-input>
@@ -50,6 +52,7 @@
 //import { PUBLISH_PASSAGE } from "@/store/type/actions";
 
 import { PUBLISH_PASSAGE } from "@/store/type/actions";
+import { mapState } from "vuex";
 
 export default {
   name: "publishPassage",
@@ -63,11 +66,17 @@ export default {
       keyword2: "",
       keyword3: "",
       type: "",
+      newsSource: "",
       waiting: false,
       loading: false,
       options: ["事实核查", "可视化新闻", "研究中心", "质量报告"],
       pictureUrls: []
     };
+  },
+  computed: {
+    ...mapState({
+      publishResult: state => state.passage.publishResult
+    })
   },
   methods: {
     publishPassage: async function() {
@@ -79,10 +88,11 @@ export default {
         keyword2: this.keyword2,
         keyword3: this.keyword3,
         type: this.type,
+        newsSource: this.newsSource,
         pictureUrls: this.pictureUrls
       });
       console.log(this.publishResult);
-      if (this.publishResult.code === 1) {
+      if (this.publishResult === 1) {
         this.$message({
           message: "发布成功",
           type: "success"

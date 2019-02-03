@@ -7,8 +7,9 @@
         <div class="top">
           <div class="head">
             <div class="title">{{passageInfo.title}}</div>
-            <div class="info">{{passageInfo.newsSource}},  {{passageInfo.newsClass}},  {{passageInfo.postTime}},
-              {{passageInfo.keyword1}}, {{passageInfo.keyword2}}, {{passageInfo.keyword3}}</div>
+            <div class="info">{{passageInfo.newsSource}},  {{passageInfo.newsClass}},  {{passageInfo.postTime}}
+              <p v-for="item in passageInfo.keywords" :key="item" style="display: inline-block">,  {{item}}</p>
+            </div>
           </div>
         </div>
         <div class="block" style="width:90%;margin-left: 5%;">
@@ -67,6 +68,11 @@ export default {
   //         }
   //     }
   //   }
+  beforeCreate() {
+    if (localStorage.getItem("njuhzl_passageID") === null) {
+      this.$router.replace("/");
+    }
+  },
   async mounted() {
     //挂载后拉取数据
     await this.$store.dispatch(FETCH_PASSAGE_DETAIL, {
@@ -124,7 +130,9 @@ export default {
   /*font-size: 22px;*/
   font-size: 17px;
   line-height: 32px;
-  text-indent: 2em;
   margin-bottom: 60px;
+  word-break: normal;
+  white-space: pre-line;
+  word-wrap: break-word;
 }
 </style>

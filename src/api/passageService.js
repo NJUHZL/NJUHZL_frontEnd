@@ -29,6 +29,7 @@ export const publishPassage = ({
   keyword2,
   keyword3,
   type,
+  newsSource,
   pictureUrls
 }) => {
   return request(`${PASSAGE_MODULE}/publish`, {
@@ -41,6 +42,7 @@ export const publishPassage = ({
       keyword2: keyword2,
       keyword3: keyword3,
       type: type,
+      newsSource: newsSource,
       picUrls: JSON.stringify(pictureUrls)
     }
   });

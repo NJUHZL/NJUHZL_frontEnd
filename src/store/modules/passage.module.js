@@ -32,7 +32,6 @@ const actions = {
   async [ACTIONS.FETCH_ONE_CLASS_OF_PASSAGE_LIST](context, className) {
     console.log("CLASS_NAME:", className);
     const result = await fetchOneClassOfPassageList(className);
-    console.log(result);
     context.commit(MUTATIONS.SET_ONE_CLASS_OF_PASSAGE_LIST, result);
   },
 
@@ -42,6 +41,7 @@ const actions = {
 
   async [ACTIONS.PUBLISH_PASSAGE](context, info) {
     const result = await publishPassage(info);
+    console.log(result);
     context.commit(MUTATIONS.PUBLISH_PASSAGE, result.code);
   },
   async [ACTIONS.FETCH_ALL_PASSAGE](context) {
@@ -54,6 +54,7 @@ const actions = {
   },
   async [ACTIONS.FETCH_PASSAGE_DETAIL](context, id) {
     const result = await fetchPassageDetail(id);
+    console.log(result);
     context.commit(MUTATIONS.SET_PASSAGE_DETAIL, result);
   }
 };
