@@ -4,9 +4,12 @@
       <left-navi/>
     </div>
     <div class="items">
+      <news-item :id="111"></news-item>
+      <news-item :id="222"></news-item>
       <news-item
         v-for="(item, index) in oneClassOfPassageList.passage"
         v-bind:key="index"
+        :id="item.id"
         :title="item.title"
         :newsSource="item.newsSource"
         :newsClass="item.newsClass"
@@ -67,14 +70,15 @@ export default {
 <style lang="scss" scoped>
 .main {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 30px 50px;
   .navi {
+    margin-left: 60px;
     max-width: 250px;
     max-height: 200px;
   }
   .items {
-    margin: 0 150px;
+    margin: 0 300px 0 0;
   }
 }
 </style>

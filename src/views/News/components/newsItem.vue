@@ -1,12 +1,12 @@
 <template>
   <div class="main">
     <div class="align-right">
-      <div class="header">{{title}}</div>
+      <div class="header" @click="onClick">{{title}}</div>
       <div class="divider">
         <div class="blue-style">{{newsSource}} {{newsClass}}</div>
         <div class="plain-style">{{postTime}}</div>
       </div>
-      <div class="content">
+      <div class="content" @click="onClick">
         <img class="picture" v-bind:src="pictureURL">
         <div class="text">{{abstract}}</div>
       </div>
@@ -32,6 +32,10 @@
 export default {
   name: "newsItem",
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       default: "这是新闻的标题"
@@ -76,6 +80,11 @@ export default {
       type: Number,
       default: 14
     }
+  },
+  methods: {
+    onClick() {
+      window.location.href = `/news/${this.id}`;
+    }
   }
 };
 </script>
@@ -93,6 +102,7 @@ export default {
     .header {
       font-size: 30px;
       font-weight: bold;
+      cursor: pointer;
     }
     .divider {
       display: flex;
@@ -114,6 +124,7 @@ export default {
     .content {
       display: flex;
       justify-content: space-between;
+      cursor: pointer;
       .picture {
         max-width: 300px;
         max-height: 250px;
