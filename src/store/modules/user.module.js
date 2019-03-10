@@ -21,12 +21,13 @@ const actions = {
     context.commit(MUTATIONS.SET_TOKEN, identifyResult.token);
   },
   async [ACTIONS.LOGIN](context, info) {
-    const { code, token } = await login(info);
+    const { code, token, userProfile } = await login(info);
     if (code > 0) {
       //登录成功
       setToken(token);
       context.commit(MUTATIONS.SET_LOGIN_ERROR, false);
       context.commit(MUTATIONS.SET_AUTH, true);
+      context.commit(MUTATIONS.SET_USER_PROFILE, userProfile);
       localStorage.njuhzl_state = "online";
       if (code === 2) {
         localStorage.njuhzl_root = "ok";
@@ -62,6 +63,9 @@ const mutations = {
   },
   [MUTATIONS.REGISTER](state, result) {
     state.registerResult = result;
+  },
+  [MUTATIONS.SET_USER_PROFILE](state, result) {
+    state.userProfile = result;
   }
 };
 

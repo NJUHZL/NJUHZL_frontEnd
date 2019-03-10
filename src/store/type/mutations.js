@@ -3,6 +3,7 @@ export const REGISTER = "register";
 export const SET_TOKEN = "setToken";
 export const SET_AUTH = "setAuth";
 export const SET_LOGIN_ERROR = "setLoginError";
+export const SET_USER_PROFILE = "setUserProfile";
 
 export const SET_HOT_PASSAGE = "setHotPassage";
 export const SET_LATEST_PASSAGE = "setLatestPassage";
