@@ -1,5 +1,5 @@
-import request from "../util/request";
-import { PASSAGE_MODULE } from "./_prefix";
+import request from '../util/request';
+import { PASSAGE_MODULE } from './_prefix';
 
 /**
  *  获得走马热点文章
@@ -14,7 +14,7 @@ export const fetchHotPassage = () => {
  */
 export const fetchOneClassOfPassageList = className => {
   return request(`${PASSAGE_MODULE}/class`, {
-    method: "POST",
+    method: 'POST',
     body: {
       className: className
     }
@@ -33,7 +33,7 @@ export const publishPassage = ({
   pictureUrls
 }) => {
   return request(`${PASSAGE_MODULE}/publish`, {
-    method: "POST",
+    method: 'POST',
     body: {
       title: title,
       abstract: abstract,
@@ -55,7 +55,7 @@ export const fetchAllPassage = () => {
 export const deletePassage = ({ id }) => {
   console.log(id);
   return request(`${PASSAGE_MODULE}/delete`, {
-    method: "POST",
+    method: 'POST',
     body: {
       id: id
     }
@@ -65,9 +65,39 @@ export const deletePassage = ({ id }) => {
 export const fetchPassageDetail = ({ id }) => {
   console.log(id);
   return request(`${PASSAGE_MODULE}/detail`, {
-    method: "POST",
+    method: 'POST',
     body: {
       passageID: id
+    }
+  });
+};
+
+export const fetchComment = ({ passageID }) => {
+  return request(`${PASSAGE_MODULE}/comment`, {
+    method: 'POST',
+    body: {
+      passageID: id
+    }
+  });
+};
+
+export const postComment = ({
+  passageID,
+  content,
+  email,
+  nickname,
+  femail,
+  fnickname
+}) => {
+  return request(`${PASSAGE_MODULE}/comment`, {
+    method: 'POST',
+    body: {
+      passageID,
+      content,
+      email,
+      nickname,
+      femail,
+      fnickname
     }
   });
 };

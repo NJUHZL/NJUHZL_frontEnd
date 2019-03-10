@@ -25,6 +25,7 @@
         </el-carousel>
       </div>
       <div class="content" v-html="passageInfo.content"></div>
+      <passage-comment></passage-comment>
     </div>
   </div>
 </template>
@@ -33,10 +34,11 @@
 import { mapState } from "vuex";
 import { FETCH_PASSAGE_DETAIL } from "@/store/type/actions";
 import LeftNavi from "../components/LeftNavi";
+import PassageComment from "../components/PassageComment";
 
 export default {
   name: "PassageDetail",
-  components: { LeftNavi },
+  components: { LeftNavi, PassageComment },
   computed: {
     ...mapState({
       passageInfo: state => state.passage.passageInfo
