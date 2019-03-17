@@ -2,25 +2,25 @@
   <div class="navi">
     <img class="logo" :src="logoURL">
     <el-menu default-active="1" @select="fetchOneClassOfPassageList">
-      <el-menu-item index="sshc">
+      <el-menu-item index="事实核查">
         <div class="menu-item">
           <div>事实核查</div>
           <div class="number">1</div>
         </div>
       </el-menu-item>
-      <el-menu-item index="kshxw">
+      <el-menu-item index="可视化新闻">
         <div class="menu-item">
           <div>可视化新闻</div>
           <div class="number">1</div>
         </div>
       </el-menu-item>
-      <el-menu-item index="yjzx">
+      <el-menu-item index="研究中心">
         <div class="menu-item">
           <div>研究中心</div>
           <div class="number">1</div>
         </div>
       </el-menu-item>
-      <el-menu-item index="zlbg">
+      <el-menu-item index="质量报告">
         <div class="menu-item">
           <div>每周质量报告</div>
           <div class="number">1</div>

@@ -95,9 +95,12 @@ export default {
   },
   methods: {
     showDetail(passageID) {
-      console.log(passageID);
-      localStorage.njuhzl_passageID = passageID;
-      this.$router.push({ name: "passageDetail" });
+        this.$router.push({
+            name: "passageDetail",
+            params:{
+                passageID: passageID
+            }
+        });
     }
   },
   computed: {

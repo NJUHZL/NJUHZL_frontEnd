@@ -78,7 +78,7 @@ export default {
   async mounted() {
     //挂载后拉取数据
     await this.$store.dispatch(FETCH_PASSAGE_DETAIL, {
-      id: this.$route.params.id
+      id: this.$route.params.passageID
     });
   }
 };

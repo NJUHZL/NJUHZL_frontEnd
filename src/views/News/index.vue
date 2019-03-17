@@ -4,8 +4,6 @@
       <left-navi/>
     </div>
     <div class="items">
-      <news-item :id="111"></news-item>
-      <news-item :id="222"></news-item>
       <news-item
         v-for="(item, index) in oneClassOfPassageList.passage"
         v-bind:key="index"
@@ -51,9 +49,12 @@ export default {
       this.$store.dispatch(SET_CURRENT_CLASS, key);
     },
     showDetail(passageID) {
-      console.log(passageID);
-      localStorage.njuhzl_passageID = passageID;
-      this.$router.push({ name: "passageDetail" });
+      this.$router.push({
+          name: "passageDetail",
+          params:{
+              passageID: passageID
+          }
+      });
     }
   },
   async mounted() {

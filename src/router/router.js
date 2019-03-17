@@ -35,7 +35,7 @@ const router = new VueRouter({
         },
         {
           name: 'passageDetail',
-          path: '/news/:id',
+          path: '/news/detail_:passageID',
           meta: { requireAuth: true },
           component: () => import('@/views/PassageDetail.vue')
         },
