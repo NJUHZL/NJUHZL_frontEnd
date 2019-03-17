@@ -2,6 +2,7 @@ module.exports = {
   //baseUrl: "./",
   devServer: {
     port: 80,
+    disableHostCheck: true,
     proxy: {
       "/api": {
         target: "http://47.101.144.241:3000/",
@@ -13,7 +14,7 @@ module.exports = {
       index: "/index.html" //index.html为当前目录创建的template.html
     }
   },
-  configureWebpack: {
+  configureWebpack: { 
     externals: {
       vue: "Vue",
       vuex: "Vuex",

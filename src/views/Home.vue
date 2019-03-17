@@ -4,7 +4,8 @@
       <navi></navi>
     </div>
     <div>
-      <banner class="banner"/>
+      <carousel style=""></carousel>
+      <banner class="banner" style="margin-top: 120px"/>
       <div class="page-content">
         <div style="text-align: center">
           <div class="el-card is-always-shadow function-card">
@@ -21,7 +22,6 @@
           </div>
         </div>
       </div>
-      <carousel style="margin-top: 90px"></carousel>
       <div style="margin-left: 10%;margin-top: 80px">
         <abstract v-for="(item, id) in latestPassage"
                   v-bind:key="id"
@@ -109,7 +109,7 @@ export default {
 
   async mounted() {
     //挂载后拉取数据
-    $("#nav").css("backgroundColor", "transparent");
+    //$("#nav").css("backgroundColor", "transparent");
     await this.$store.dispatch(FETCH_LATEST_PASSAGE);
     await this.$store.dispatch(FETCH_LATEST_COMMENTS);
   }

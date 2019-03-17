@@ -78,7 +78,7 @@ export default {
     max-height: 200px;
   }
   .items {
-    margin: 0 300px 0 0;
+    margin: 0 6% 0 0;
   }
 }
 </style>

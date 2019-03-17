@@ -20,7 +20,7 @@
       <el-menu-item id="guide" index="4">
         <a href="/news">新闻</a>
       </el-menu-item>
-      <el-menu-item index="5">
+      <el-menu-item index="5" disabled>
         <a href="/courses">课程</a>
       </el-menu-item>
       <el-menu-item index="6" style="float: right">
