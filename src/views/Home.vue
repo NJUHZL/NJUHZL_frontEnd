@@ -5,8 +5,7 @@
     </div>
     <div>
       <carousel style=""></carousel>
-      <banner class="banner" style="margin-top: 120px"/>
-      <div class="page-content">
+      <div class="page-content" style="margin-top: 100px">
         <div style="text-align: center">
           <div class="el-card is-always-shadow function-card">
             <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/事实核查.png"/>
@@ -44,7 +43,8 @@
           ></recommendComment>
         </div>
       </div>
-      <div style="text-align: center;margin-top: 50px;padding-bottom: 60px">
+      <banner class="banner" style="margin-top: 120px"/>
+      <div style="text-align: center;padding-bottom: 60px">
         <div class="introBlock">
           <h2><i class="el-icon-success" style="color: lightblue"></i>  新闻核实</h2>
           <p>“核真录”始终免费开放的功能，为公众提供免费的新闻核实、查验服务，对各种假新闻、错误信息、谣言等进行核查和澄清。</p>
