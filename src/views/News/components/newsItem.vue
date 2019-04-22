@@ -6,7 +6,7 @@
         <div class="blue-style">{{newsSource}} {{newsClass}}</div>
         <div class="plain-style">{{postTime}}</div>
       </div>
-      <div class="content" @click="onClick">
+      <div class="content">
         <img class="picture" v-bind:src="pictureURL">
         <div class="text">{{abstract}}</div>
       </div>
