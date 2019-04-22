@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="align-right">
-      <div class="header" @click="onClick">{{title}}</div>
+      <div class="header">{{title}}</div>
       <div class="divider">
         <div class="blue-style">{{newsSource}} {{newsClass}}</div>
         <div class="plain-style">{{postTime}}</div>
@@ -79,11 +79,6 @@ export default {
     commentCount: {
       type: Number,
       default: 14
-    }
-  },
-  methods: {
-    onClick() {
-      window.location.href = `/news/${this.id}`;
     }
   }
 };
