@@ -132,6 +132,7 @@ export default {
       }
     }
     .footer {
+      min-height: 16px;
       margin: 30px 0 10px 0;
       display: flex;
       justify-content: space-between;
