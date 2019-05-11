@@ -22,6 +22,7 @@ export const fetchOneClassOfPassageList = className => {
 };
 
 export const publishPassage = ({
+    id,
   title,
   abstract,
   content,
@@ -35,6 +36,7 @@ export const publishPassage = ({
   return request(`${PASSAGE_MODULE}/publish`, {
     method: 'POST',
     body: {
+      id:id,
       title: title,
       abstract: abstract,
       content: content,

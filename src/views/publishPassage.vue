@@ -53,11 +53,13 @@
 
 import { PUBLISH_PASSAGE } from "@/store/type/actions";
 import { mapState } from "vuex";
+import {FETCH_PASSAGE_DETAIL} from "../store/type/actions";
 
 export default {
   name: "publishPassage",
   data() {
     return {
+        id:-1,
       files: [],
       title: "",
       abstract: "",
@@ -75,7 +77,8 @@ export default {
   },
   computed: {
     ...mapState({
-      publishResult: state => state.passage.publishResult
+      publishResult: state => state.passage.publishResult,
+        passageInfo:state=>state.passage.passageInfo
     })
   },
   beforeCreate() {
@@ -87,9 +90,31 @@ export default {
       this.$router.replace("/login");
     }
   },
+    async mounted() {
+      if(this.$route.params.passageID){
+          //挂载后拉取数据
+          await this.$store.dispatch(FETCH_PASSAGE_DETAIL, {
+              id: this.$route.params.passageID
+          });
+          let pi=this.passageInfo;
+          this.title=pi.title;
+          this.newsSource=pi.newsSource;
+          this.type=pi.newsClass;
+          this.abstract=pi.abstract;
+          this.content=pi.content;
+          this.keyword1=pi.keywords[0];
+          if(pi.keywords.length>=2){
+              this.keyword2=pi.keywords[1];
+          }
+          if(pi.keywords.length===3){
+              this.keyword3=pi.keywords[2];
+          }
+      }
+    },
   methods: {
     publishPassage: async function() {
       await this.$store.dispatch(PUBLISH_PASSAGE, {
+          id:this.id,
         title: this.title,
         abstract: this.abstract,
         content: this.content,
@@ -117,6 +142,9 @@ export default {
     },
 
     submit() {
+        if(this.files.length===0){
+            return;
+        }
       console.log();
       this.pictureUrls = [];
       let that = this;
