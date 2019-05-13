@@ -78,8 +78,6 @@ export default {
         let url="www.njuhzl.cn"||window.location.href.split("//")[1]||Url;
         let picurl=localStorage.getItem("picurl")||Picurl;
         let abstract=localStorage.getItem("abstract")||Abstract;
-        alert(typeof localStorage.abstract);
-        alert(Abstract);
       let shareString =
         "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url="+
           encodeURIComponent(url || document.location) +
@@ -89,7 +87,6 @@ export default {
           encodeURIComponent(picurl)+
           "&summary="+
           encodeURIComponent(abstract);
-        alert(shareString);
       window.open(
         shareString,
         "_blank",
