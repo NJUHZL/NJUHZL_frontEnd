@@ -80,7 +80,30 @@ export default {
     await this.$store.dispatch(FETCH_PASSAGE_DETAIL, {
       id: this.$route.params.passageID
     });
-  }
+    localStorage.setItem("title", this.passageInfo.title);
+      localStorage.setItem("abstract", this.passageInfo.abstract);
+      localStorage.setItem("picurl", this.passageInfo.picUrls[0]);
+  },
+    beforeRouteLeave(to, from, next) {
+      localStorage.removeItem("title");
+        localStorage.removeItem("abstract");
+        localStorage.removeItem("picurl");
+        next();
+    },
+    beforeRouteUpdate(to, from, next) {
+        localStorage.removeItem("title");
+        localStorage.removeItem("abstract");
+        localStorage.removeItem("picurl");
+        next();
+    },
+    watch:{
+        //查询参数改变，再次执行数据获取方法
+        $route(to,from){
+            localStorage.removeItem("title");
+            localStorage.removeItem("abstract");
+            localStorage.removeItem("picurl");
+        }
+    },
 };
 </script>
 

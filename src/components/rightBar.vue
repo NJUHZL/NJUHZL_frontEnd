@@ -6,7 +6,7 @@
       </div>
       <div id="shareContainer">
         <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/qq.png" class="shareChoice" v-on:click="qqShare"/>
-        <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/wechat.png" class="shareChoice"/>
+        <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/wechat.png" class="shareChoice" v-on:click="wechatShare"/>
         <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/sina.png" class="shareChoice" v-on:click="sinaShare"/>
       </div>
     </div>
@@ -26,9 +26,10 @@
 </template>
 
 <script>
-let title = "NJU核真录";
-let url = "http://193.112.82.110:3030/";
-let picurl = "../assets/img/hzl_logo.png";
+let Title = "NJU核真录";
+let Url = "http://www.njuhzl.cn/";
+let Picurl = "http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/hzl_logo.png";
+let Abstract="NJU核真录";
 
 export default {
   name: "rightBar",
@@ -68,38 +69,75 @@ export default {
     $("#share").hover(function() {
       $("#shareContainer").animate({ width: "toggle" }, 350);
     });
+
   },
 
   methods: {
     qqShare: function() {
+        let title=localStorage.getItem("title")||Title;
+        let url="www.njuhzl.cn"||window.location.href.split("//")[1]||Url;
+        let picurl=localStorage.getItem("picurl")||Picurl;
+        let abstract=localStorage.getItem("abstract")||Abstract;
+        alert(typeof localStorage.abstract);
+        alert(Abstract);
       let shareString =
-        "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary=" +
+        "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url="+
+          encodeURIComponent(url || document.location) +
+        "&title=" +
         encodeURIComponent(title) +
-        "&url=" +
-        encodeURIComponent(url || document.location) +
-        "&pics=" +
-        encodeURIComponent(picurl);
+          "&pics=" +
+          encodeURIComponent(picurl)+
+          "&summary="+
+          encodeURIComponent(abstract);
+        alert(shareString);
       window.open(
         shareString,
-        "newwindow",
-        "height=400,width=400,top=100,left=100"
+        "_blank",
       );
     },
 
     sinaShare: function() {
+        let title=localStorage.title||Title;
+        let url=window.location.href||Url;
+        let picurl=localStorage.picurl||Picurl;
+        let abstract=localStorage.abstract||Abstract;
       let shareString =
         "http://v.t.sina.com.cn/share/share.php?title=" +
         encodeURIComponent(title) +
         "&url=" +
         encodeURIComponent(url || document.location) +
-        "&pics=" +
+          '&content=utf-8&sourceUrl='+
+          encodeURIComponent(url || document.location)+
+        "&pic=" +
         encodeURIComponent(picurl);
       window.open(
         shareString,
-        "newwindow",
-        "height=400,width=400,top=100,left=100"
+          "_blank"
       );
-    }
+    },
+      wechatShare: function() {
+          WeixinJSBridge.invoke('sendAppMessage',{
+
+              "appid": "",
+
+              "img_url": picurl,
+
+              "img_width": "200",
+
+              "img_height": "200",
+
+              "link": url,
+
+              "desc": content,
+
+              "title": localStorage.passageTitle||title
+
+          }, function(res) {
+
+              //_report('send_msg', res.err_msg);  // 这是回调函数，必须注释掉
+
+          });
+      }
   }
 };
 </script>
