@@ -1,38 +1,44 @@
 <template>
-    <div class="main">
-      <div class="navi">
-        <LeftNavi/>
-      </div>
-      <div class="body">
-        <div class="top">
-          <div class="head">
-            <div class="title">{{passageInfo.title}}</div>
-            <div class="info">{{passageInfo.newsSource}},  {{passageInfo.newsClass}},  {{passageInfo.postTime}}
-              <p v-for="item in passageInfo.keywords" :key="item" style="display: inline-block">,  {{item}}</p>
-            </div>
+  <div class="main">
+    <div class="navi">
+      <LeftNavi/>
+    </div>
+    <div class="body">
+      <div class="top">
+        <div class="head">
+          <div class="title">{{passageInfo.title}}</div>
+          <div class="info">
+            {{passageInfo.newsSource}}, {{passageInfo.newsClass}}, {{passageInfo.postTime}}
+            <p
+              v-for="item in passageInfo.keywords"
+              :key="item"
+              style="display: inline-block"
+            >, {{item}}</p>
           </div>
         </div>
-        <div class="block" style="width:90%;margin-left: 5%;">
-          <el-carousel>
-            <el-carousel-item v-for="item in passageInfo.picUrls" :key="item">
-              <img :src="item" style="width: 100%"/>
-            </el-carousel-item>
-          </el-carousel>
-        </div>
-        <div class="content" v-html="passageInfo.content"></div>
       </div>
-
+      <div class="block" style="width:90%;margin-left: 5%;">
+        <el-carousel>
+          <el-carousel-item v-for="item in passageInfo.picUrls" :key="item">
+            <img :src="item" style="width: 100%">
+          </el-carousel-item>
+        </el-carousel>
+      </div>
+      <div class="content" v-html="passageInfo.content"></div>
+      <passage-comment></passage-comment>
     </div>
+  </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import { FETCH_PASSAGE_DETAIL } from "@/store/type/actions";
 import LeftNavi from "../components/LeftNavi";
+import PassageComment from "../components/PassageComment";
 
 export default {
   name: "PassageDetail",
-  components: { LeftNavi },
+  components: { LeftNavi, PassageComment },
   computed: {
     ...mapState({
       passageInfo: state => state.passage.passageInfo
@@ -68,21 +74,36 @@ export default {
   //         }
   //     }
   //   }
-  beforeCreate() {
-    if (localStorage.getItem("njuhzl_passageID") === null) {
-      this.$router.replace("/");
-    }
-  },
+
   async mounted() {
     //挂载后拉取数据
     await this.$store.dispatch(FETCH_PASSAGE_DETAIL, {
-      id: parseInt(localStorage.njuhzl_passageID)
+      id: this.$route.params.passageID
     });
-    window.onbeforeunload = function() {
-      console.log("clearpid");
-      localStorage.removeItem("njuhzl_passageID");
-    };
-  }
+    localStorage.setItem("title", this.passageInfo.title);
+      localStorage.setItem("abstract", this.passageInfo.abstract);
+      localStorage.setItem("picurl", this.passageInfo.picUrls[0]);
+  },
+    beforeRouteLeave(to, from, next) {
+      localStorage.removeItem("title");
+        localStorage.removeItem("abstract");
+        localStorage.removeItem("picurl");
+        next();
+    },
+    beforeRouteUpdate(to, from, next) {
+        localStorage.removeItem("title");
+        localStorage.removeItem("abstract");
+        localStorage.removeItem("picurl");
+        next();
+    },
+    watch:{
+        //查询参数改变，再次执行数据获取方法
+        $route(to,from){
+            localStorage.removeItem("title");
+            localStorage.removeItem("abstract");
+            localStorage.removeItem("picurl");
+        }
+    },
 };
 </script>
 

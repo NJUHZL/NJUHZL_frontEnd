@@ -32,6 +32,10 @@
 export default {
   name: "newsItem",
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       default: "这是新闻的标题"
@@ -93,6 +97,7 @@ export default {
     .header {
       font-size: 30px;
       font-weight: bold;
+      cursor: pointer;
     }
     .divider {
       display: flex;
@@ -114,6 +119,7 @@ export default {
     .content {
       display: flex;
       justify-content: space-between;
+      cursor: pointer;
       .picture {
         max-width: 300px;
         max-height: 250px;
@@ -126,6 +132,7 @@ export default {
       }
     }
     .footer {
+      min-height: 16px;
       margin: 30px 0 10px 0;
       display: flex;
       justify-content: space-between;

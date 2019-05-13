@@ -1,0 +1,15 @@
+{
+  "passageID": "xxx",
+  "commentID": 1,
+  "fatherCommentID": 0,
+  "user": {
+    "email": "xxx",
+    "nickname": "xxx"
+  },
+  "fatherUser": {
+    "email": "xxx",
+    "nickname": "xxx"
+  },
+  "content": "xxx",
+  "time": "xxx"
+}

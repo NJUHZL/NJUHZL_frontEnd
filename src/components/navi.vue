@@ -15,18 +15,37 @@
         </a>
       </el-menu-item>
       <el-menu-item id="evaluate" index="3">
-        <a href="/">首页</a>
+        <router-link to="/">
+          <a>首页</a>
+        </router-link>
       </el-menu-item>
       <el-menu-item id="guide" index="4">
-        <a href="/news">新闻</a>
+        <router-link to="/news">
+          <a>新闻</a>
+        </router-link>
       </el-menu-item>
-      <el-menu-item index="5">
-        <a href="/courses">课程</a>
+      <el-menu-item index="5" disabled>
+        <router-link to="/courses">
+          <a>课程</a>
+        </router-link>
       </el-menu-item>
-      <el-menu-item index="6" style="float: right">
-        <a href="/login" id="login">登录</a>
+      <el-menu-item index="7" style="float: right" v-if="online">
+        <router-link to="/login">
+          <a>切换账号</a>
+        </router-link>
         /
-        <a href="/signup" id="signup">注册</a>
+        <router-link to="/">
+          <a @click="logout">退出登录</a>
+        </router-link>
+      </el-menu-item>
+      <el-menu-item index="6" style="float: right" v-else>
+        <router-link to="/login">
+          <a>登录</a>
+        </router-link>
+        /
+        <router-link to="/signup">
+          <a>注册</a>
+        </router-link>
       </el-menu-item>
     </el-menu>
   </div>
@@ -38,23 +57,29 @@ export default {
   name: "navi",
   data() {
     return {
-      activeIndex: "1"
+      activeIndex: "1",
+        online:false
     };
   },
-  mounted() {
+  created() {
+      console.log(localStorage.njuhzl_state);
     if (localStorage.njuhzl_state === "online") {
-      let that = this;
-      $("#login").text("切换账号");
-      $("#signup").attr("href", "#");
-      $("#signup").text("退出登录");
-      $("#signup").on("click", function() {
-        console.log("logout");
-        localStorage.removeItem("njuhzl_state");
-        localStorage.removeItem("njuhzl_root");
-        that.reload();
-      });
+        this.online=true;
+        console.log(this.online===true);
+    }else{
+        this.online=false;
     }
-  }
+  },
+    methods:{
+        logout(){
+            console.log("logout");
+            localStorage.removeItem("njuhzl_state");
+            localStorage.removeItem("njuhzl_root");
+            this.online=false;
+            this.reload();
+        }
+    }
+
 };
 </script>
 

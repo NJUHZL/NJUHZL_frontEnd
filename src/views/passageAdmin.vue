@@ -27,6 +27,7 @@
                 width="100">
             <template slot-scope="scope">
                 <el-button @click="deleteRow(scope.row)" type="text" size="small">删除</el-button>
+                <el-button @click="editPassage(scope.row)" type="text" size="small">编辑</el-button>
             </template>
         </el-table-column>
     </el-table>
@@ -74,7 +75,15 @@ export default {
           type: "success"
         });
       }
-    }
+    },
+      editPassage: function (row) {
+          this.$router.push({
+              name: "publishPassage",
+              params:{
+                  passageID: row.id
+              }
+          });
+      }
   }
 };
 </script>

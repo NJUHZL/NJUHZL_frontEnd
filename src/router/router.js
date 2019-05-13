@@ -1,81 +1,81 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   //base: "/NJUHZL_frontEnd",
   routes: [
     {
-      path: "/user",
-      component: () => import("@/layout/defaultLayout"),
+      path: '/user',
+      component: () => import('@/layout/defaultLayout'),
       children: [
         {
-          name: "register",
-          path: "register",
+          name: 'register',
+          path: 'register',
           meta: { requireAuth: true },
-          component: () => import("@/views/Register")
+          component: () => import('@/views/Register')
         }
       ]
     },
     {
-      path: "/",
-      component: () => import("@/layout/defaultLayout"),
+      path: '/',
+      component: () => import('@/layout/defaultLayout'),
       children: [
         {
-          path: "",
-          redirect: "/home"
+          path: '',
+          redirect: '/home'
         },
         {
-          name: "news",
-          path: "/news",
+          name: 'news',
+          path: '/news',
           meta: { requireAuth: true },
-          component: () => import("@/views/News/index.vue")
+          component: () => import('@/views/News/index.vue')
         },
         {
-          name: "passageDetail",
-          path: "/passageDetail",
+          name: 'passageDetail',
+          path: '/news/detail_:passageID',
           meta: { requireAuth: true },
-          component: () => import("@/views/PassageDetail.vue")
+          component: () => import('@/views/PassageDetail.vue')
         },
         {
-          name: "courses",
-          path: "/courses",
+          name: 'courses',
+          path: '/courses',
           meta: { requireAuth: true },
-          component: () => import("@/views/Courses/index.vue")
+          component: () => import('@/views/Courses/index.vue')
         }
       ]
     },
     {
-      path: "/home",
-      name: "home",
+      path: '/home',
+      name: 'home',
       meta: { requireAuth: true },
-      component: () => import("@/views/Home.vue")
+      component: () => import('@/views/Home.vue')
     },
     {
-      path: "/login",
-      name: "login",
+      path: '/login',
+      name: 'login',
       meta: { requireAuth: false },
-      component: () => import("@/views/login.vue")
+      component: () => import('@/views/login.vue')
     },
     {
-      path: "/signup",
-      name: "signup",
+      path: '/signup',
+      name: 'signup',
       meta: { requireAuth: false },
-      component: () => import("@/views/signup.vue")
+      component: () => import('@/views/signup.vue')
     },
     {
-      path: "/backstage/publishPassage",
-      name: "publishPassage",
+      path: '/backstage/publishPassage',
+      name: 'publishPassage',
       meta: { requireAuth: false },
-      component: () => import("@/views/publishPassage.vue")
+      component: () => import('@/views/publishPassage.vue')
     },
     {
-      path: "/backstage/passageAdmin",
-      name: "passageAdmin",
+      path: '/backstage/passageAdmin',
+      name: 'passageAdmin',
       meta: { requireAuth: false },
-      component: () => import("@/views/passageAdmin.vue")
+      component: () => import('@/views/passageAdmin.vue')
     }
   ]
 });

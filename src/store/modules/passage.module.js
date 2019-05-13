@@ -1,19 +1,21 @@
-import * as ACTIONS from "@/store/type/actions";
-import * as MUTATIONS from "@/store/type/mutations";
+import * as ACTIONS from '@/store/type/actions';
+import * as MUTATIONS from '@/store/type/mutations';
 import {
   fetchHotPassage,
   fetchOneClassOfPassageList,
   publishPassage,
   fetchAllPassage,
   deletePassage,
-  fetchPassageDetail
-} from "@/api/passageService";
+  fetchPassageDetail,
+  fetchComment,
+  postComment
+} from '@/api/passageService';
 
 //State
 const state = {
   hotPassage: [],
   oneClassOfPassageList: [],
-  currentClass: "事实核查",
+  currentClass: '事实核查',
   publishResult: 0,
   allPassage: [],
   deleteResult: 0,
@@ -30,7 +32,7 @@ const actions = {
 
   //获得某一类型的文档列表
   async [ACTIONS.FETCH_ONE_CLASS_OF_PASSAGE_LIST](context, className) {
-    console.log("CLASS_NAME:", className);
+    console.log('CLASS_NAME:', className);
     const result = await fetchOneClassOfPassageList(className);
     context.commit(MUTATIONS.SET_ONE_CLASS_OF_PASSAGE_LIST, result);
   },
