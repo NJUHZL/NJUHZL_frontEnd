@@ -6,7 +6,13 @@
       </div>
       <div id="shareContainer">
         <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/qq.png" class="shareChoice" v-on:click="qqShare"/>
-        <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/wechat.png" class="shareChoice" v-on:click="wechatShare"/>
+        <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/wechat.png" class="shareChoice" v-on:click="showPublicAccount"/>
+        <div id="publicAccount" ref="publicAccount" style="display: none;">
+          <p>欢迎关注</p>
+          <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/publicAccount.jpg" style="width:100px;height: 100px" />
+          <p><strong>NJU核真录</strong>公众号</p>
+          <p>更多往期精彩文章</p>
+        </div>
         <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/sina.png" class="shareChoice" v-on:click="sinaShare"/>
       </div>
     </div>
@@ -17,6 +23,11 @@
       <a>意见<br>反馈</a>
       <i class="el-icon-edit-outline"></i>
     </div>
+    <div class="rightItem" @mouseenter="showPay" @mouseleave="hidePay">
+      <a>打赏<br>本站</a>
+      <i class="el-icon-coin"></i>
+    </div>
+    <img src="http://njuhzl.oss-cn-hangzhou.aliyuncs.com/static/payPic.jpg" class="pay" style="display: none" ref="payPic"/>
     <div class="rightItem" id="backTop">
       <a>返回<br>顶部</a>
       <i class="el-icon-caret-top"></i>
@@ -112,28 +123,18 @@ export default {
           "_blank"
       );
     },
-      wechatShare: function() {
-          WeixinJSBridge.invoke('sendAppMessage',{
-
-              "appid": "",
-
-              "img_url": picurl,
-
-              "img_width": "200",
-
-              "img_height": "200",
-
-              "link": url,
-
-              "desc": content,
-
-              "title": localStorage.passageTitle||title
-
-          }, function(res) {
-
-              //_report('send_msg', res.err_msg);  // 这是回调函数，必须注释掉
-
-          });
+      showPublicAccount(){
+        if(this.$refs.publicAccount.style.display==="none"){
+            this.$refs.publicAccount.style.display="block";
+        }else{
+            this.$refs.publicAccount.style.display="none";
+        }
+      },
+      showPay(){
+          this.$refs.payPic.style.display="block";
+      },
+      hidePay(){
+          this.$refs.payPic.style.display="none";
       }
   }
 };
@@ -225,4 +226,27 @@ export default {
 #share:hover .rightItem i {
   color: white;
 }
+
+  #publicAccount{
+    height:170px;
+    width:150px;
+    background-color: #f7f8f8;
+    position: absolute;
+    font-size: 12px;
+    margin-top: 60px;
+    margin-left: 0;
+    text-align: center;
+  }
+#publicAccount p{
+  margin: 5px;
+  font-size: 12px;
+}
+
+  .pay{
+    position:absolute;
+    width: 150px;
+    min-height: 150px;
+    margin-left: -150px;
+    margin-top:-90px;
+  }
 </style>
