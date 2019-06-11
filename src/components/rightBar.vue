@@ -23,7 +23,7 @@
       <a>意见<br>反馈</a>
       <i class="el-icon-edit-outline"></i>
     </div>
-    <div class="rightItem" @mouseenter="showPay" @mouseleave="hidePay">
+    <div class="rightItem" @mouseenter="showPay" @mouseleave="hidePay" id="payButton">
       <a>打赏<br>本站</a>
       <i class="el-icon-coin"></i>
     </div>
@@ -249,4 +249,9 @@ export default {
     margin-left: -150px;
     margin-top:-90px;
   }
+
+  #payButton:hover i{
+    display: none;
+  }
+
 </style>
